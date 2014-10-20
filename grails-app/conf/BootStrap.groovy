@@ -1,4 +1,6 @@
+import com.rolex.blog.Navigation
 import com.rolex.blog.Post
+import com.rolex.blog.Tag
 
 class BootStrap {
 
@@ -32,6 +34,28 @@ class BootStrap {
                         '\t\t\t\t    posuere nunc justo tempus leo.</p>',publisher: 'Erwin1')]
         posts*.save()
         print "$posts.size posts saved."
+
+        def nav = [
+                new Navigation(name:'Home',url:'#'),
+                new Navigation(name:'Demo',url:'#'),
+                new Navigation(name:'Archives',url:'#'),
+                new Navigation(name:'Blog',url:'#'),
+                new Navigation(name:'About',url:'#')
+        ]
+
+        nav*.save()
+        print "$nav.size navigations saved."
+
+        def tags = [
+                new Tag(name:'Java',url:'#'),
+                new Tag(name:'Grails',url:'#'),
+                new Tag(name:'Git',url:'#'),
+                new Tag(name:'Spring',url:'#'),
+                new Tag(name:'Hibernate',url:'#')
+        ]
+
+        tags*.save()
+        print "$tags.size tags saved."
     }
     def destroy = {
     }

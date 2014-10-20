@@ -12,6 +12,8 @@ class PostController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+        flash.postInstance = Post.list(params)
+        flash.navInstance = Navigation.list()
         respond Post.list(params), model: [postInstanceCount: Post.count()]
     }
 

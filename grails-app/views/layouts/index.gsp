@@ -48,14 +48,9 @@
             <h3>Just Another Styleshout Template</h3>
         </hgroup>
 
-        <nav>
+        <nav class="nav">
             <ul>
-                <li class="current"><a href="index.html">Home</a><span></span></li>
-                <li><a href="style.html">Style Demo</a><span></span></li>
-                <li><a href="blog.html">Blog</a><span></span></li>
-                <li><a href="archive.html">Archives</a><span></span></li>
-                <li><a href="index.html">Support</a><span></span></li>
-                <li><a href="index.html">About</a><span></span></li>
+
             </ul>
         </nav>
 
@@ -260,6 +255,23 @@
     </p>
     <!-- /footer -->
 </footer>
+<script>
+    $(function(){
+        $.post('${resource(dir: "/")}navigation/getNavs',{},function(data){
+            var nav = "";
 
+            $(data).each(function(i){
+
+                nav += '<li ';
+                if(i==0){
+                    nav += 'class="current"';
+                }
+                nav += '><a href="index.html">'+data[i].name+'</a><span></span></li>';
+
+            });
+            $(".nav").children("ul").append(nav);
+        });
+    });
+</script>
 </body>
 </html>
