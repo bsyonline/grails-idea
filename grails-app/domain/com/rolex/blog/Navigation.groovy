@@ -4,4 +4,6 @@ class Navigation {
 
     static constraints = {
     }
+
+
 }
