@@ -5,5 +5,6 @@ class Navigation {
     static constraints = {
     }
 
-
+    String name
+    String url
 }
