@@ -32,8 +32,8 @@
     <g:javascript src="jquery-1.11.1.min.js"/>
     <g:javascript src="scrollToTop.js"/>
     <g:javascript src="../ckeditor/ckeditor.js" />
-    <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap/css/bootstrap-theme.min.css')}" type="text/css">
-
+    <g:layoutHead/>
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap/css/bootstrap.min.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'blog.css')}" type="text/css">
 </head>
 

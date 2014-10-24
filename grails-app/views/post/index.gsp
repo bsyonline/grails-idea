@@ -3,7 +3,6 @@
 <html>
 <head>
     <meta name="layout" content="index"/>
-
 </head>
 <body>
 <!-- content-wrap -->
@@ -32,7 +31,7 @@
             <div class="sidemenu">
 
                 <h3>Tags</h3>
-                <ul>
+                <ul class="tag">
 
                 </ul>
 
@@ -109,7 +108,7 @@
 
                         ${post.content}
                         %{--<%=post.content%>--}%
-                        <p><a class="more" href="index.html">Continue Reading &raquo;</a></p>
+                        <p><g:link action='show' controller='post' id='${post.id}' class="more">Continue Reading &raquo;</g:link></p>
 
                     </div>
                     <aside class="hidden-xs" >

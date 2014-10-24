@@ -373,12 +373,12 @@ header {
 }
 
 .main {
+    border-right: 1px solid #e5e5e5;
     float: right;
     margin: 40px 0 0 0;
     padding: 0;
     max-width: 978px;
     width: expression(this.width>480 ? "978px":this.width+"px") !important;
-
 }
 .main .main-content {
     padding-right: 30px;
@@ -393,6 +393,7 @@ header {
     padding: 45px 0 24px 25px;
     width: 222px;
     border-left: 1px solid #E5E5E5;
+    margin-left: -1px;
 }
 .extra-wrap {
     width: 100%;
@@ -829,11 +830,10 @@ footer p.footer-right {
     padding: 0;
 }
 .primary .image-section img {
-    width: 90%;
+    width: 95%;
 }
 aside {
     position: relative;
-    width: 135px;
     float: right;
 }
 
@@ -896,6 +896,12 @@ aside .post-meta ul li.time { background: url(../images/clock.png) no-repeat 2px
 aside .post-meta ul li.comment { background: url(../images/comment.png) no-repeat 2px center; }
 aside .post-meta ul li.permalink { background: url(../images/permalink.png) no-repeat 2px center; }
 
+.post-info span { background: url(../images/tag.png) no-repeat 2px center; padding-left: 22px}
+span.user { background: url(../images/user.png) no-repeat 2px center; padding-left: 22px;margin-left: 5px;}
+span.time { background: url(../images/clock.png) no-repeat 2px center; padding-left: 22px;margin-left: 5px;}
+span.comment { background: url(../images/comment.png) no-repeat 2px center; padding-left: 22px;margin-left: 5px;}
+span.permalink { background: url(../images/permalink.png) no-repeat 2px center; padding-left: 22px;margin-left: 5px;}
+
 aside .post-meta ul li a {
     font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Verdana, Sans-Serif;
     font-size: 12px;
@@ -908,7 +914,8 @@ aside .post-meta ul li a:hover { color: #CC3300; }
     position: relative;
     margin: 10px 0 20px 0;
     padding: 0 0 20px 0;
-    width: 726px;
+    max-width: 726px;
+    width:expression(this.width>480?"726px":this.width+"px");
     overflow: hidden;
     border-bottom: 1px solid #E5E5E5;
 }
