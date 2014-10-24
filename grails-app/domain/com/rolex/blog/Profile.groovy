@@ -4,11 +4,8 @@ class Profile {
 
     static constraints = {
     }
-
-    static belongsTo = User
-
     static mapping = {
-        table 'b_user_info'
+        table 'b_profile'
         version false
     }
 

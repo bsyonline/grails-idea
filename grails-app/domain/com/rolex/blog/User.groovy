@@ -8,7 +8,9 @@ class User {
         email(email: true)
         profile(nullable: true)
     }
-
+    static hasMany = [replies:Reply,replyTo:Reply,posts:Post]
+    static mappedBy = [replies:'replier',replyTo:'replyTo']
+    static hasOne = [profile:Profile]
     static mapping = {
         table 'b_user'
         version false
@@ -20,5 +22,4 @@ class User {
     Date dateCreated
     Date lastUpdated
     int active
-    Profile profile
 }

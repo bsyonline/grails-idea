@@ -102,6 +102,7 @@
 <!-- post-bottom-section -->
 <div class="post-bottom-section">
     <ol class="commentlist">
+        <g:each in="${postInstance.replies}" var="reply">
         <li class="depth-1">
             <div class="comment-info">
                 <img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42"/>
@@ -112,170 +113,16 @@
             </div>
 
             <div class="comment-text">
-                <p>Comments are great!</p>
+                <p>${reply.content}</p>
 
                 <div class="reply">
                     <a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
                 </div>
             </div>
-            <ul class="children">
-                <li class="depth-2">
-                    <div class="comment-info">
-                        <img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42"/>
-                        <cite>
-                            <a href="index.html">Erwin</a> Says: <br/>
-                            <span class="comment-data"><a href="#" title="">January 31st, 2010 at 8:15 pm</a></span>
-                        </cite>
-                    </div>
-
-                    <div class="comment-text">
-                        <p>And here is a threaded comment.</p>
-
-                        <div class="reply">
-                            <a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="depth-2">
-                    <div class="comment-info">
-                        <img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42"/>
-                        <cite>
-                            <a href="index.html">Erwin</a> Says: <br/>
-                            <span class="comment-data"><a href="#" title="">January 31st, 2010 at 8:15 pm</a></span>
-                        </cite>
-                    </div>
-
-                    <div class="comment-text">
-                        <p>And here is another threaded comment.</p>
-
-                        <div class="reply">
-                            <a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-                        </div>
-                    </div>
-                    <ul class="children">
-                        <li class="depth-3">
-                            <div class="comment-info">
-                                <img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42"/>
-                                <cite>
-                                    <a href="index.html">Erwin</a> Says: <br/>
-                                    <span class="comment-data"><a href="#" title="">January 31st, 2010 at 8:10 pm</a>
-                                    </span>
-                                </cite>
-                            </div>
-
-                            <div class="comment-text">
-                                <p>Threaded comments are cool!</p>
-
-                                <div class="reply">
-                                    <a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li class="thread-alt depth-1">
-            <div class="comment-info">
-                <img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42"/>
-                <cite>
-                    <a href="index.html">Erwin</a> Says: <br/>
-                    <span class="comment-data"><a href="#comment-63" title="">January 31st, 2010 at 8:00 pm</a></span>
-                </cite>
-            </div>
-
-            <div class="comment-text">
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero.
-                Suspendisse bibendum.</p>
-
-                <div class="reply">
-                    <a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-                </div>
-            </div>
-            <ul class="children">
-                <li class="depth-2">
-                    <div class="comment-info">
-                        <img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42"/>
-                        <cite>
-                            <a href="index.html">Erwin</a> Says: <br/>
-                            <span class="comment-data"><a href="#" title="">January 31st, 2010 7:35 pm</a></span>
-                        </cite>
-                    </div>
-
-                    <div class="comment-text">
-                        <p>Donec libero. Suspendisse bibendum.</p>
-
-                        <div class="reply">
-                            <a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-                        </div>
-                    </div>
-                    <ul class="children">
-                        <li class="depth-3">
-                            <div class="comment-info">
-                                <img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42"/>
-                                <cite>
-                                    <a href="index.html">Erwin</a> Says: <br/>
-                                    <span class="comment-data"><a href="#" title="">January 31st, 2010 at 7:20 pm</a>
-                                    </span>
-                                </cite>
-                            </div>
-
-                            <div class="comment-text">
-                                <p>Threaded comments are cool!</p>
-
-                                <div class="reply">
-                                    <a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li class="depth-1">
-            <div class="comment-info">
-                <img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42"/>
-                <cite>
-                    <a href="index.html">Erwin</a> Says: <br/>
-                    <span class="comment-data"><a href="#comment-63" title="">January 31st, 2010  at 6:08 pm</a></span>
-                </cite>
-            </div>
-
-            <div class="comment-text">
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.
-                Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu
-                posuere nunc justo tempus leo.</p>
-
-                <div class="reply">
-                    <a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-                </div>
-            </div>
-            <ul class="children">
-
-                <li class="depth-2">
-
-                    <div class="comment-info">
-                        <img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42"/>
-                        <cite>
-                            <a href="index.html">Erwin</a> Says: <br/>
-                            <span class="comment-data"><a href="#comment-63" title="">January 31st, 2010 at 6:08 pm</a>
-                            </span>
-                        </cite>
-                    </div>
-
-                    <div class="comment-text">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-
-                        <div class="reply">
-                            <a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
-                        </div>
-                    </div>
-
-                </li>
-
-            </ul>
 
         </li>
+        </g:each>
+
 
         <!-- /comment-list -->
     </ol>

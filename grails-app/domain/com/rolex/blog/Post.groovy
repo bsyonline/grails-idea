@@ -15,10 +15,11 @@ class Post {
             content length: 5000
         }
     }
-
+    static belongsTo = [publisher:User]
+    static hasMany = [replies:Reply]
 
     String title
-    String publisher
+    User publisher
     Date dateCreated
     Date lastUpdated
     String content

@@ -41,6 +41,24 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${userInstance?.email}">
+				<li class="fieldcontain">
+					<span id="email-label" class="property-label"><g:message code="user.email.label" default="Email" /></span>
+					
+						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${userInstance}" field="email"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.profile}">
+				<li class="fieldcontain">
+					<span id="profile-label" class="property-label"><g:message code="user.profile.label" default="Profile" /></span>
+					
+						<span class="property-value" aria-labelledby="profile-label"><g:link controller="profile" action="show" id="${userInstance?.profile?.id}">${userInstance?.profile?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${userInstance?.active}">
 				<li class="fieldcontain">
 					<span id="active-label" class="property-label"><g:message code="user.active.label" default="Active" /></span>
@@ -59,20 +77,44 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${userInstance?.email}">
-				<li class="fieldcontain">
-					<span id="email-label" class="property-label"><g:message code="user.email.label" default="Email" /></span>
-					
-						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${userInstance}" field="email"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${userInstance?.lastUpdated}">
 				<li class="fieldcontain">
 					<span id="lastUpdated-label" class="property-label"><g:message code="user.lastUpdated.label" default="Last Updated" /></span>
 					
 						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${userInstance?.lastUpdated}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.posts}">
+				<li class="fieldcontain">
+					<span id="posts-label" class="property-label"><g:message code="user.posts.label" default="Posts" /></span>
+					
+						<g:each in="${userInstance.posts}" var="p">
+						<span class="property-value" aria-labelledby="posts-label"><g:link controller="post" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.replies}">
+				<li class="fieldcontain">
+					<span id="replies-label" class="property-label"><g:message code="user.replies.label" default="Replies" /></span>
+					
+						<g:each in="${userInstance.replies}" var="r">
+						<span class="property-value" aria-labelledby="replies-label"><g:link controller="reply" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${userInstance?.replyTo}">
+				<li class="fieldcontain">
+					<span id="replyTo-label" class="property-label"><g:message code="user.replyTo.label" default="Reply To" /></span>
+					
+						<g:each in="${userInstance.replyTo}" var="r">
+						<span class="property-value" aria-labelledby="replyTo-label"><g:link controller="reply" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>

@@ -28,13 +28,13 @@
 					
 						<g:sortableColumn property="password" title="${message(code: 'user.password.label', default: 'Password')}" />
 					
+						<g:sortableColumn property="email" title="${message(code: 'user.email.label', default: 'Email')}" />
+					
+						<th><g:message code="user.profile.label" default="Profile" /></th>
+					
 						<g:sortableColumn property="active" title="${message(code: 'user.active.label', default: 'Active')}" />
 					
 						<g:sortableColumn property="dateCreated" title="${message(code: 'user.dateCreated.label', default: 'Date Created')}" />
-					
-						<g:sortableColumn property="email" title="${message(code: 'user.email.label', default: 'Email')}" />
-					
-						<g:sortableColumn property="lastUpdated" title="${message(code: 'user.lastUpdated.label', default: 'Last Updated')}" />
 					
 					</tr>
 				</thead>
@@ -46,13 +46,13 @@
 					
 						<td>${fieldValue(bean: userInstance, field: "password")}</td>
 					
+						<td>${fieldValue(bean: userInstance, field: "email")}</td>
+					
+						<td>${fieldValue(bean: userInstance, field: "profile")}</td>
+					
 						<td>${fieldValue(bean: userInstance, field: "active")}</td>
 					
 						<td><g:formatDate date="${userInstance.dateCreated}" /></td>
-					
-						<td>${fieldValue(bean: userInstance, field: "email")}</td>
-					
-						<td><g:formatDate date="${userInstance.lastUpdated}" /></td>
 					
 					</tr>
 				</g:each>
