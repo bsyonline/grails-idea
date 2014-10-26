@@ -966,92 +966,61 @@ aside .post-meta ul li a:hover { color: #CC3300; }
 }
 
 /* Comments List */
-ol.commentlist {
-    margin: 12px 5px 12px 0;
-    padding: 0;
-    background: #FAFAFA;
-    border-top: 1px solid #E3E6E8;
+.comment-list{
+    margin-top: -61px;
 }
-.commentlist li {
-    list-style: none;
-    margin: 0;
-    padding: 12px 0 0 0;
-    border: 1px solid #E3E6E8;
-    border-width: 0 1px 1px 1px;
-    overflow: hidden;
+.comment-body{
+    max-width: 710px;
+    padding: 10px 0 10px 0px;
+    width:expression(this.width>480?"690px":this.width+"px");
+    border-top: solid 1px #E5E5E5;
+    margin: 20px 0;
 }
-.commentlist li a:link,
-.commentlist li a:visited {
-    color: #227bad;
+.comment-body .avatar{
+    float: left;
+    width: 100px;
+    padding : 0;
 }
-.commentlist li a:hover {
-    color: #CC3300;
+.comment-body .avatar img{
+    width: 60px;
+    height: 60px;
+    margin-left: 10px;
 }
-.commentlist li .comment-info {
-    width: 99%;
-    margin: 5px 0 0 0; padding: 0;
-    overflow: hidden;
+.comment-body .comment-info{
+    margin-left: 100px;margin-top: 5px;
 }
-.commentlist li .comment-info img {
+.comment-body .comment-info .comment-text{
+    max-width: 726px;
+    width:expression(this.width>480?"726px":this.width+"px");
+    margin: 10px 0;
+}
+.comment-body .comment-info .comment-data .comment{
     float: right;
-    margin: 3px 20px 0 0;
-    padding: 10px;
-    background: #fff;
-    border:  1px  solid #DBDBDB;
-
-    box-shadow: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
+    height: 18px;
+    margin-top: 3px;
 }
-.commentlist li .comment-info cite {
-    display: block;
-    margin: 0; padding: 5px 65px 5px 25px;
-    font-style: normal;
+.comment-body .comment-info .comment-data .comment a{
+    float: right;margin-top: -5px; margin-right: 10px;
+    height: 18px;
 }
-.commentlist li .comment-info cite .comment-data {
-    font-size: .8em;
-    font-weight: normal;
+.reply-list {
+    width: auto;
+    height: 55px;
+    padding: 5px 0;
 }
-.commentlist li .comment-text {
-    clear: both;
-    margin: 10px 0 0 0; padding: 0 25px 25px 25px;
+.reply-list div{
+    width: auto;
+    height: 55px;
+    padding: 5px 0;
+    border: solid 1px #E5E5E5;
+    float: right;
+    margin-right: 10px;
 }
-.commentlist li .comment-text p {
-    margin:  5px 0 20px 0;
-    padding: 0;
+.reply-list img{
+    height: 30px;
+    width: 30px !important;
+    margin: 5px;padding: 5px;
 }
-.commentlist li .comment-text .reply a {
-    padding: 6px 7px;
-    border: 1px solid #2177A5;
-    background-color: #227bad;
-    font-family: 'Lucida Grande', 'Lucida Sans', 'Lucida Sans Unicode', Verdana, Sans-Serif;
-    font-size: 11px;
-    font-weight: bold;
-    color: #fff;
-
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.5);
-
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-
-    box-shadow: 0px 1px 2px rgba(0,0,0,0.3), inset 0 1px 0 #3CA5D2;
-    -moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.3), inset 0 1px 0 #3CA5D2;
-    -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3), inset 0 1px 0 #3CA5D2;
-}
-.commentlist li ul.children { margin:0; padding: 0; }
-.commentlist li ul.children li.depth-2,
-.commentlist li ul.children li.depth-3 {
-    margin-left: 40px;
-    border-style: solid;
-    border-color: #DEE2E4;
-    border-width: 1px 0 0 1px;
-}
-.commentlist li.thread-alt {
-    background: #F3F4F5;
-    border-color: #DDDFE3;
-}
-
 /* ------------------------------------------------------------------------------
     A R C H I V E S
 --------------------------------------------------------------------------------- */

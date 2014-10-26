@@ -100,33 +100,31 @@
     </div>
 </article>
 <!-- post-bottom-section -->
-<div class="post-bottom-section">
-    <ol class="commentlist">
-        <g:each in="${postInstance.replies}" var="reply">
-        <li class="depth-1">
-            <div class="comment-info">
-                <img alt="" src="images/gravatar.jpg" class="avatar" height="42" width="42"/>
-                <cite>
-                    <a href="index.html">Erwin</a> Says: <br/>
-                    <span class="comment-data"><a href="#comment-63" title="">January 31st, 2010 at 10:00 pm</a></span>
-                </cite>
-            </div>
-
-            <div class="comment-text">
-                <p>${reply.content}</p>
-
-                <div class="reply">
-                    <a rel="nofollow" class="comment-reply-link" href="index.html">Reply</a>
+        <div class="comment-list">
+<g:each in="${postInstance.replies}" var="reply">
+            <div class="comment-body">
+                <div class="avatar"><img alt="" src="${resource(dir: "images", file: "/avatar.jpg")}" class="avatar" height="42" width="42"/></div>
+                <div class="comment-info">
+                    <div class="author-name">Erwin</div>
+                    <div class="comment-text">${reply.content}</div>
+                    <div class="comment-data">
+                        <span class="comment-time">10:00 pm</span>
+                        <span class="comment"><a href="#comment-63" title="">3</a></span>
+                    </div>
+                    <g:if test="${reply?.replies}">
+                    <div class="reply-list">
+                        <div>
+                            <g:each in="${reply.replies}" var="r">
+                            <span><img alt="" src="${resource(dir: "images", file: "/avatar.jpg")}" class="avatar" height="42" width="42"/></span>
+                            </g:each>
+                        </div>
+                    </div>
+                    </g:if>
                 </div>
             </div>
+</g:each>
+        </div>
 
-        </li>
-        </g:each>
-
-
-        <!-- /comment-list -->
-    </ol>
-</div>
 
 
 <form action="index.html" method="post" id="commentform" class="hidden-xs">

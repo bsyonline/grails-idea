@@ -66,7 +66,7 @@ class BootStrap {
 
         def replies = [
                 new Reply(content:'hello'),
-                new Reply(content:'hello hello'),
+                new Reply(content:'hello<br><br><br><br><br> hello'),
                 new Reply(content:'hello hello hello')
         ]
         replies[0].post = posts[0]
