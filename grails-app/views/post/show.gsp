@@ -101,7 +101,7 @@
 </article>
 <!-- post-bottom-section -->
         <div class="comment-list">
-<g:each in="${postInstance.replies}" var="reply">
+<g:each in="${postInstance.replies}" var="reply" status="i">
             <div class="comment-body">
                 <div class="avatar"><img alt="" src="${resource(dir: "images", file: "/avatar.jpg")}" class="avatar" height="42" width="42"/></div>
                 <div class="comment-info">
@@ -112,14 +112,32 @@
                         <span class="comment"><a href="#comment-63" title="">3</a></span>
                     </div>
                     <g:if test="${reply?.replies}">
-                    <div class="reply-list">
+                    <div class="reply-list" id="reply-list-${i}">
                         <div>
                             <g:each in="${reply.replies}" var="r">
-                            <span><img alt="" src="${resource(dir: "images", file: "/avatar.jpg")}" class="avatar" height="42" width="42"/></span>
+                            <span onclick="show('${i}')"><img alt="" src="${resource(dir: "images", file: "/avatar.jpg")}" class="avatar" height="42" width="42"/></span>
                             </g:each>
                         </div>
                     </div>
                     </g:if>
+                    <div class="more-${i}" style="display: none">
+                        <div class="inner-reply-list">
+                        <g:each in="${reply.replies}" var="r">
+                            <div class="inner-reply-body">
+                                <div class="inner-avatar"><img alt="" src="${resource(dir: "images", file: "/avatar.jpg")}" height="42" width="42"/></div>
+                                <div class="inner-info">
+                                    <div class="inner-author-name">rolex</div>
+                                    <div class="inner-comment-text">${r.content}</div>
+                                    <div class="inner-comment-data">
+                                        <span class="inner-comment-time">10:00 pm</span>
+                                        <span class="inner-comment">回复</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </g:each>
+                        </div>
+                        <div onclick="hide('${i}')">close</div>
+                    </div>
                 </div>
             </div>
 </g:each>
@@ -163,5 +181,15 @@
 
 <!-- /content-out -->
 </div>
+<g:javascript>
+function show(arg){
+    $(".more-"+arg).show()
+    $("#reply-list-"+arg).hide()
+}
+function hide(arg){
+    $(".more-"+arg).hide()
+    $("#reply-list-"+arg).show()
+}
+</g:javascript>
 </body>
 </html>

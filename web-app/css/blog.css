@@ -1008,10 +1008,13 @@ aside .post-meta ul li a:hover { color: #CC3300; }
     height: 55px;
     padding: 5px 0;
 }
+.reply-list span:hover{
+    cursor: pointer;
+}
 .reply-list div{
     width: auto;
     height: 55px;
-    padding: 5px 0;
+    padding: 5px;
     border: solid 1px #E5E5E5;
     float: right;
     margin-right: 10px;
@@ -1020,6 +1023,37 @@ aside .post-meta ul li a:hover { color: #CC3300; }
     height: 30px;
     width: 30px !important;
     margin: 5px;padding: 5px;
+}
+.more{
+    display: none;
+}
+.inner-reply-list{
+    margin-top: 40px;
+    border: solid 1px #e5e5e5;
+    margin-right: 10px;
+}
+.inner-reply-body{
+    padding: 10px 0 10px 0px;
+    margin: -1px 0;
+    border-top: solid 1px #e5e5e5;
+
+}
+.inner-avatar{
+    float: left;
+    padding : 0;
+}
+.inner-avatar img{
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    padding: 0 !important;
+}
+.inner-info{
+    margin-left: 70px;
+}
+.inner-comment{
+    float: right;
+    margin-right: 10px;
 }
 /* ------------------------------------------------------------------------------
     A R C H I V E S
