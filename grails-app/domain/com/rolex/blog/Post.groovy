@@ -12,7 +12,7 @@ class Post {
     static mapping = {
         table 'b_post'
         columns {
-            content length: 5000
+            content type: 'text'
         }
     }
     static belongsTo = [publisher:User]

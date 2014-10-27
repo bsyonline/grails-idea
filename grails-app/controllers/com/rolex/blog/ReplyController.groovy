@@ -103,13 +103,11 @@ class ReplyController {
     }
 
     def reply(){
+        print params.content
+        print params.post?.id
+        print params.replyTo?.id
         Reply replyInstance = new Reply(params)
-        print replyInstance
-        replyInstance.save flush:true
-        if(replyInstance.hasErrors()){
-            render "false" as JSON
-        }else {
-            render "true" as JSON
-        }
+        replyInstance.save()
+            render replyInstance as JSON
     }
 }

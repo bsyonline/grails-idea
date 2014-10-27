@@ -18,7 +18,7 @@ class PostController {
     }
 
     def show(Post postInstance) {
-        respond postInstance
+        render (view:'show',model: [postInstance:postInstance,replyInstance:new Reply(params)])
     }
 
     def create() {

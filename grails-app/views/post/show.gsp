@@ -87,7 +87,7 @@
 
         <p class="post-info"><span></span> <a href="index.html">12:30 PM</a>, <a
                 href="index.html">internet</a>
-            <span class="user"></span><a href="#">${postInstance.publisher}</a>
+            <span class="user"></span><a href="#">${postInstance.publisher.username}</a>
             <span class="time"></span>12:30 PM
             <span class="comment"></span><a href="#">2 Comments</a>
         </p>
@@ -142,7 +142,7 @@
                                     <div class="inner-author-name" id="inner-author-name-${r.id}">rolex</div>
                                     <div class="inner-comment-text">${r.content}</div>
                                     <div class="inner-comment-data">
-                                        <span class="inner-comment-time">10:00 pm</span>
+                                        <span class="inner-comment-time">${new java.util.Date()}</span>
                                         <span class="inner-comment"><a href="javascript:void(0)" onclick="quickreply('${r.id}')">回复</a></span>
                                     </div>
                                 </div>
@@ -162,7 +162,6 @@
     <g:hiddenField id="post-id" name="post.id" value="${postInstance?.id}"/>
     <g:hiddenField id="replier-id" name="replier.id" value="1"/>
     <div>
-        <label for="content">Your Message <span>*</span></label>
         <g:textArea class="ckeditor" name="content" id="content"></g:textArea>
     </div>
 
@@ -226,7 +225,7 @@ function hide(arg){
                 +"<div class='author-name'>Erwin</div>"
                 +"<div class='comment-text'>"+CKEDITOR.instances.content.getData()+"</div>"
                 +"<div class='comment-data'>"
-                +"<span class='comment-time'>10:00 pm</span>"
+                +"<span class='comment-time'>"+new Date()+"</span>"
                 +"<span class='comment'><a href='#comment-63' title=''>3</a></span>"
                 +"</div></div></div>"
 
