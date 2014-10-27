@@ -1,6 +1,6 @@
 package com.rolex.blog
 
-
+import grails.converters.JSON
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -99,6 +99,17 @@ class ReplyController {
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
+        }
+    }
+
+    def reply(){
+        Reply replyInstance = new Reply(params)
+        print replyInstance
+        replyInstance.save flush:true
+        if(replyInstance.hasErrors()){
+            render "false" as JSON
+        }else {
+            render "true" as JSON
         }
     }
 }

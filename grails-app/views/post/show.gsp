@@ -112,31 +112,44 @@
                         <span class="comment"><a href="#comment-63" title="">3</a></span>
                     </div>
                     <g:if test="${reply?.replies}">
-                    <div class="reply-list" id="reply-list-${i}">
-                        <div>
-                            <g:each in="${reply.replies}" var="r">
-                            <span onclick="show('${i}')"><img alt="" src="${resource(dir: "images", file: "/avatar.jpg")}" class="avatar" height="42" width="42"/></span>
-                            </g:each>
+                        <div class="triangle-up-border"></div>
+                        <div class="triangle-up-background"></div>
+                        <div class="reply-list" id="reply-list-${i}">
+
+                            <div>
+                                <g:each in="${reply.replies}" var="r">
+                                <span onclick="show('${i}')"><img alt="" src="${resource(dir: "images", file: "/avatar.jpg")}" class="avatar" height="42" width="42"/></span>
+                                </g:each>
+                            </div>
+
                         </div>
-                    </div>
+
                     </g:if>
-                    <div id="more-${i}" style="display: none">
+                    <div id="more-${i}" class="more-replies">
+                        <div class="quick-reply">
+                        <g:formRemote name="quickReplyForm" url="[controller: 'reply', action:'reply']" onSuccess="quickReplySuccess(data)">
+                            <g:hiddenField id="replyTo-id" name="replyTo.id" value=""/>
+                            <g:hiddenField id="replier-id" name="replier.id" value="1"/>
+                            <input type="text" name="content" class="quick-input">
+                            <g:actionSubmit action="reply" class="button quick-btn" value="submit"/>
+                        </g:formRemote>
+                        </div>
                         <div class="inner-reply-list">
                         <g:each in="${reply.replies}" var="r">
                             <div class="inner-reply-body">
                                 <div class="inner-avatar"><img alt="" src="${resource(dir: "images", file: "/avatar.jpg")}" height="42" width="42"/></div>
                                 <div class="inner-info">
-                                    <div class="inner-author-name">rolex</div>
+                                    <div class="inner-author-name" id="inner-author-name-${r.id}">rolex</div>
                                     <div class="inner-comment-text">${r.content}</div>
                                     <div class="inner-comment-data">
                                         <span class="inner-comment-time">10:00 pm</span>
-                                        <span class="inner-comment">回复</span>
+                                        <span class="inner-comment"><a href="javascript:void(0)" onclick="quickreply('${r.id}')">回复</a></span>
                                     </div>
                                 </div>
                             </div>
                         </g:each>
                         </div>
-                        <div onclick="hide('${i}')">close</div>
+                        <div onclick="hide('${i}')" class="close-btn">关闭</div>
                     </div>
                 </div>
             </div>
@@ -145,33 +158,19 @@
 
 
 
-<form action="index.html" method="post" id="commentform" class="hidden-xs">
-
+<g:formRemote name="myForm" url="[controller: 'reply', action:'reply']" class="hidden-xs" onSuccess="replySuccess(data)">
+    <g:hiddenField id="post-id" name="post.id" value="${postInstance?.id}"/>
+    <g:hiddenField id="replier-id" name="replier.id" value="1"/>
     <div>
-        <label for="name">Name <span>*</span></label>
-        <input id="name" name="name" value="Your Name" type="text" tabindex="1"/>
-    </div>
-
-    <div>
-        <label for="email">Email Address <span>*</span></label>
-        <input id="email" name="email" value="Your Email" type="text" tabindex="2"/>
-    </div>
-
-    <div>
-        <label for="website">Website</label>
-        <input id="website" name="website" value="Your Website" type="text" tabindex="3"/>
-    </div>
-
-    <div>
-        <label for="message">Your Message <span>*</span></label>
-        <textarea id="message" name="message" rows="10" cols="18" tabindex="4"></textarea>
+        <label for="content">Your Message <span>*</span></label>
+        <g:textArea class="ckeditor" name="content" id="content"></g:textArea>
     </div>
 
     <div class="no-border">
-        <input class="button" type="submit" value="Submit Comment" tabindex="5"/>
+        <g:actionSubmit action="reply" class="button" value="Submit comment"/>
     </div>
 
-</form>
+</g:formRemote>
 
 <!-- /main -->
 </div>
@@ -182,6 +181,34 @@
 <!-- /content-out -->
 </div>
 <g:javascript>
+$(function(){
+     if($(window).width() < 300){
+        $(".comment-body > .avatar").hide()
+     }
+     if($(window).width() < 480){
+        $(".comment-body > .comment-info").css("margin-left","10px")
+        $(".inner-info").css("margin-left","10px")
+        $(".quick-input").css("width","72%")
+
+        $(".inner-avatar").hide()
+     }
+     $(window).resize(function(){
+        if($(window).width()<300){
+            $(".comment-body > .avatar").hide()
+        }else if($(window).width()<480){
+            $(".comment-body > .comment-info").css("margin-left","10px")
+            $(".inner-info").css("margin-left","10px")
+            $(".quick-input").css("width","72%")
+            $(".inner-avatar").hide()
+        }else{
+            $(".comment-body > .comment-info").css("margin-left","100px")
+            $(".inner-info").css("margin-left","70px")
+            $(".quick-input").css("width","79%")
+            $(".comment-body > .avatar").show()
+            $(".inner-avatar").show()
+        }
+     });
+});
 function show(arg){
     $("#more-"+arg).show()
     $("#reply-list-"+arg).hide()
@@ -190,6 +217,33 @@ function hide(arg){
     $("#more-"+arg).hide()
     $("#reply-list-"+arg).show()
 }
+    function replySuccess(data){
+        if(data){
+
+            var text="<div class='comment-body'>"
+                +"<div class='avatar'><img alt='' src='${resource(dir: 'images', file: '/avatar.jpg')}' class='avatar' height='42' width='42'/></div>"
+                +"<div class='comment-info'>"
+                +"<div class='author-name'>Erwin</div>"
+                +"<div class='comment-text'>"+CKEDITOR.instances.content.getData()+"</div>"
+                +"<div class='comment-data'>"
+                +"<span class='comment-time'>10:00 pm</span>"
+                +"<span class='comment'><a href='#comment-63' title=''>3</a></span>"
+                +"</div></div></div>"
+
+            $(".comment-list").append($(text))
+            CKEDITOR.instances.content.setData("");
+        }else{
+            alert('false')
+        }
+    }
+
+    function quickreply(arg){
+        var rname = $("#inner-author-name-"+arg).text();
+        $("input[name=content]").focus().val("@"+rname+"：");
+        $("input[name=content]").val();
+    }
+
+
 </g:javascript>
 </body>
 </html>
