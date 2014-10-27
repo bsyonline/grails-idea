@@ -67,7 +67,9 @@ class BootStrap {
         def replies = [
                 new Reply(content:'hello'),
                 new Reply(content:'hello<br><br><br><br><br> hello'),
-                new Reply(content:'hello hello hello')
+                new Reply(content:'hello1'),
+                new Reply(content:'hello2'),
+                new Reply(content:'hello3')
         ]
         replies[0].post = posts[0]
         replies[0].replier = user1
@@ -79,6 +81,14 @@ class BootStrap {
         replies[2].replier = user2
         replies[2].replyTo = user1
         replies[2].parent = replies[0]
+
+        replies[3].replier = user2
+        replies[3].replyTo = user1
+        replies[3].parent = replies[0]
+
+        replies[4].replier = user2
+        replies[4].replyTo = user1
+        replies[4].parent = replies[0]
 
         replies*.save()
         print "$replies.size replies saved."

@@ -28,7 +28,7 @@
 
             </div>
 
-            <div class="sidemenu">
+            <div class="sidemenu" id="tags">
 
                 <h3>Tags</h3>
                 <ul class="tag">
@@ -107,7 +107,6 @@
                         </div>
 
                         ${post.content}
-                        %{--<%=post.content%>--}%
                         <p><g:link action='show' controller='post' id='${post.id}' class="more">Continue Reading &raquo;</g:link></p>
 
                     </div>
@@ -118,7 +117,7 @@
                         <div class="post-meta">
                             <h4>Post Info</h4>
                             <ul>
-                                <li class="user"><a href="#">${post.publisher}</a></li>
+                                <li class="user"><a href="#">${post.publisher.username}</a></li>
                                 <li class="time"><a href="#">12:30 PM</a></li>
                                 <li class="comment"><a href="#">2 Comments</a></li>
                                 <li class="permalink"><a href="#">Permalink</a></li>
@@ -146,7 +145,7 @@
                 tag += '<li><a href="index.html">'+data[i].name+'</a><span></span></li>';
 
             });
-            $(".sidemenu").children("ul").append(tag);
+            $("#tags").children("ul").append(tag);
         });
     });
 </script>

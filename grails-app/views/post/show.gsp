@@ -120,7 +120,7 @@
                         </div>
                     </div>
                     </g:if>
-                    <div class="more-${i}" style="display: none">
+                    <div id="more-${i}" style="display: none">
                         <div class="inner-reply-list">
                         <g:each in="${reply.replies}" var="r">
                             <div class="inner-reply-body">
@@ -183,11 +183,11 @@
 </div>
 <g:javascript>
 function show(arg){
-    $(".more-"+arg).show()
+    $("#more-"+arg).show()
     $("#reply-list-"+arg).hide()
 }
 function hide(arg){
-    $(".more-"+arg).hide()
+    $("#more-"+arg).hide()
     $("#reply-list-"+arg).show()
 }
 </g:javascript>
