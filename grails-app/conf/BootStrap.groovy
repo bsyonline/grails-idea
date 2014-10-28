@@ -50,7 +50,7 @@ class BootStrap {
                         '\t\t\t\t    In tristique orci porttitor ipsum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.\n' +
                         '\t\t\t\t    Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu\n' +
                         '\t\t\t\t    posuere nunc justo tempus leo.</p>')]
-        posts*.publisher = user1
+        posts*.author = user1
         posts*.tags = tags
         posts*.save()
         print "$posts.size posts saved."

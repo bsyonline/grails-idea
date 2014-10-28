@@ -1,6 +1,6 @@
 package com.rolex.blog
 
-
+import com.rolex.blog.search.PostIndexer
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -38,6 +38,8 @@ class PostController {
         }
 
         postInstance.save flush: true
+
+        PostIndexer.scheduleAddPostTask(postInstance);
 
         request.withFormat {
             form multipartForm {
@@ -102,5 +104,9 @@ class PostController {
             }
             '*' { render status: NOT_FOUND }
         }
+    }
+
+    def Post findById(int id){
+        return Post.get(id)
     }
 }

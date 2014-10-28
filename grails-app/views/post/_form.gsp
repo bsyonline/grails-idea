@@ -11,12 +11,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: postInstance, field: 'publisher', 'error')} required">
-	<label for="publisher">
-		<g:message code="post.publisher.label" default="Publisher" />
+<div class="fieldcontain ${hasErrors(bean: postInstance, field: 'author', 'error')} required">
+	<label for="author">
+		<g:message code="post.author.label" default="Author" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="publisher" required="" value="${postInstance?.publisher}"/>
+	<g:textField name="author" required="" value="${postInstance?.author}"/>
 
 </div>
 

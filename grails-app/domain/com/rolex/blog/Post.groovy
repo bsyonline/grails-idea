@@ -4,7 +4,7 @@ class Post {
 
     static constraints = {
         title(nullable: false)
-        publisher(nullable: false)
+        author(nullable: false)
         content(nullable: false)
         pic(nullable: true)
     }
@@ -15,11 +15,12 @@ class Post {
             content type: 'text'
         }
     }
-    static belongsTo = [publisher:User]
+    static belongsTo = [author:User]
     static hasMany = [replies:Reply,tags:Tag]
 
+    int id
     String title
-    User publisher
+    User author
     Date dateCreated
     Date lastUpdated
     String content

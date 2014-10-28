@@ -117,7 +117,7 @@
                         <div class="post-meta">
                             <h4>Post Info</h4>
                             <ul>
-                                <li class="user"><a href="#">${post.publisher.username}</a></li>
+                                <li class="user"><a href="#">${post.author.username}</a></li>
                                 <li class="time"><a href="#">12:30 PM</a></li>
                                 <li class="comment"><a href="#">2 Comments</a></li>
                                 <li class="permalink"><a href="#">Permalink</a></li>

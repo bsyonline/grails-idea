@@ -5,17 +5,6 @@
 <html>
 <head>
     <meta name="layout" content="index">
-    <style>
-    .primary {
-        max-width: 700px !important;
-        width: expression(this.width>480?"700px":this.width+"px") !important;
-        padding-left: 10px !important;
-    }
-
-    .post-bottom-section {
-        padding: 0 15px 20px 0 !important;
-    }
-    </style>
 </head>
 
 <body>
@@ -89,7 +78,7 @@
             <g:each in="${postInstance.tags}" status="i" var="tag">
             <a href="index.html">${tag.name}</a>&nbsp;
             </g:each>
-            <span class="user"></span><a href="#">${postInstance.publisher.username}</a>
+            <span class="user"></span><a href="#">${postInstance.author.username}</a>
             <span class="time"></span>12:30 PM
             <span class="comment"></span><a href="#">2 Comments</a>
         </p>
