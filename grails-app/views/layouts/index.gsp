@@ -31,6 +31,7 @@
     <![endif]-->
     <g:javascript src="jquery-1.11.1.min.js"/>
     <g:javascript src="scrollToTop.js"/>
+    <g:javascript src="date.js"/>
     <g:javascript src="../ckeditor/ckeditor.js" />
     <g:layoutHead/>
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap/css/bootstrap.min.css')}" type="text/css">

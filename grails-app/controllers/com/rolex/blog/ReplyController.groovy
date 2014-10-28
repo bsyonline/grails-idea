@@ -108,6 +108,6 @@ class ReplyController {
         print params.replyTo?.id
         Reply replyInstance = new Reply(params)
         replyInstance.save()
-            render replyInstance as JSON
+        render replyInstance as JSON
     }
 }

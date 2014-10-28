@@ -10,6 +10,9 @@ class Tag {
         version false
     }
 
+    static hasMany = [posts:Post]
+    static belongsTo = [Post]
+
     String name
     String url
 }

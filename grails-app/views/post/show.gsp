@@ -85,8 +85,10 @@
     <div class="primary">
         <h2><a href="index.html">${postInstance.title}</a></h2>
 
-        <p class="post-info"><span></span> <a href="index.html">12:30 PM</a>, <a
-                href="index.html">internet</a>
+        <p class="post-info"><span></span>
+            <g:each in="${postInstance.tags}" status="i" var="tag">
+            <a href="index.html">${tag.name}</a>&nbsp;
+            </g:each>
             <span class="user"></span><a href="#">${postInstance.publisher.username}</a>
             <span class="time"></span>12:30 PM
             <span class="comment"></span><a href="#">2 Comments</a>
@@ -162,7 +164,7 @@
     <g:hiddenField id="post-id" name="post.id" value="${postInstance?.id}"/>
     <g:hiddenField id="replier-id" name="replier.id" value="1"/>
     <div>
-        <g:textArea class="ckeditor" name="content" id="content"></g:textArea>
+        <g:textArea class="reply-content" name="content" id="content"></g:textArea>
     </div>
 
     <div class="no-border">
@@ -218,19 +220,18 @@ function hide(arg){
 }
     function replySuccess(data){
         if(data){
-
             var text="<div class='comment-body'>"
                 +"<div class='avatar'><img alt='' src='${resource(dir: 'images', file: '/avatar.jpg')}' class='avatar' height='42' width='42'/></div>"
                 +"<div class='comment-info'>"
                 +"<div class='author-name'>Erwin</div>"
-                +"<div class='comment-text'>"+CKEDITOR.instances.content.getData()+"</div>"
+                +"<div class='comment-text'>"+$("#content").val()+"</div>"
                 +"<div class='comment-data'>"
-                +"<span class='comment-time'>"+new Date()+"</span>"
+                +"<span class='comment-time'>"+new Date().Format("yyyy-MM-dd hh:mm:ss")+"</span>"
                 +"<span class='comment'><a href='#comment-63' title=''>3</a></span>"
                 +"</div></div></div>"
 
             $(".comment-list").append($(text))
-            CKEDITOR.instances.content.setData("");
+            $("#content").val("")
         }else{
             alert('false')
         }

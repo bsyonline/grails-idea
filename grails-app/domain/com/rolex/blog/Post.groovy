@@ -16,7 +16,7 @@ class Post {
         }
     }
     static belongsTo = [publisher:User]
-    static hasMany = [replies:Reply]
+    static hasMany = [replies:Reply,tags:Tag]
 
     String title
     User publisher

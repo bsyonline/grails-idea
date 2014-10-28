@@ -11,6 +11,18 @@ class BootStrap {
         def user2 = new User(username: 'Erwin',password: '123'.encodeAsPassword(),email: 'Erwin@gmail.com',active: 1)
         user1.save()
         user2.save()
+
+        def tags = [
+                new Tag(name:'Java',url:'#'),
+                new Tag(name:'Grails',url:'#'),
+                new Tag(name:'Git',url:'#'),
+                new Tag(name:'Spring',url:'#'),
+                new Tag(name:'Hibernate',url:'#')
+        ]
+
+        tags*.save()
+        print "$tags.size tags saved."
+
         def posts = [new Post(title: 'Read Me First',content: '<p>CoolBlue is a free website template by <a href="http://www.styleshout.com/">styleshout.com</a>.\n' +
                 '                        This work is\n' +
                 '                        released and licensed under the <a rel="license"\n' +
@@ -39,6 +51,7 @@ class BootStrap {
                         '\t\t\t\t    Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu\n' +
                         '\t\t\t\t    posuere nunc justo tempus leo.</p>')]
         posts*.publisher = user1
+        posts*.tags = tags
         posts*.save()
         print "$posts.size posts saved."
 
@@ -52,17 +65,6 @@ class BootStrap {
 
         nav*.save()
         print "$nav.size navigations saved."
-
-        def tags = [
-                new Tag(name:'Java',url:'#'),
-                new Tag(name:'Grails',url:'#'),
-                new Tag(name:'Git',url:'#'),
-                new Tag(name:'Spring',url:'#'),
-                new Tag(name:'Hibernate',url:'#')
-        ]
-
-        tags*.save()
-        print "$tags.size tags saved."
 
         def replies = [
                 new Reply(content:'hello'),
@@ -92,6 +94,8 @@ class BootStrap {
 
         replies*.save()
         print "$replies.size replies saved."
+
+
     }
     def destroy = {
     }
