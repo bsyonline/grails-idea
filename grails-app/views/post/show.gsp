@@ -5,6 +5,12 @@
 <html>
 <head>
     <meta name="layout" content="index">
+    <style>
+        .primary{
+            max-width: 698px !important;
+            width: 698px;
+        }
+    </style>
 </head>
 
 <body>

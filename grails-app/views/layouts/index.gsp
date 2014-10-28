@@ -59,7 +59,7 @@
             <span>Subscribe:</span> <a href="#">Email</a> | <a href="#">RSS</a>
         </div>
 
-        <g:form id="quick-search" class="hidden-xs" method="get" url="[controller:'search',action:'index']">
+        <g:form id="quick-search" class="hidden-xs" method="post" url="[controller:'search',action:'index']">
             <fieldset class="search">
                 <label for="qsearch">Search:</label>
                 <input class="tbox" id="qsearch" type="text" name="searchString" value="Search..."

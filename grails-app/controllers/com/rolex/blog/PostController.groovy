@@ -106,7 +106,9 @@ class PostController {
         }
     }
 
-    def Post findById(int id){
+    protected Post get(int id){
+        print "=================="
+        print Post.get(id)
         return Post.get(id)
     }
 }

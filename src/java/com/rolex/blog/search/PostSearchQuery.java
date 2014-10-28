@@ -157,7 +157,7 @@ public class PostSearchQuery {
             ClassLoader parent = getClass().getClassLoader();
             GroovyClassLoader loader = new GroovyClassLoader(parent);
             //找到指定的groovy类
-            Class groovyClass = loader.parseClass(new File("grails-blog/grails-app/utils/com/rolex/blog/PostController.groovy"));
+            Class groovyClass = loader.parseClass(new File("grails-app/controllers/com/rolex/blog/PostController.groovy"));
             //将对象实例化并且强制转换为GroovyObject对象
             GroovyObject groovyObject = null;
             try {
@@ -170,7 +170,7 @@ public class PostSearchQuery {
             //readEmailCodeUrl方法名，null 参数值，没有为null
 
 
-            Post post = (Post)groovyObject.invokeMethod("findById", postId);
+            Post post = (Post)groovyObject.invokeMethod("get", postId);
             System.out.println(postId + " - " + post);
             retValue.add(post);
         }
