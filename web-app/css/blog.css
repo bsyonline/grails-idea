@@ -1206,3 +1206,11 @@ ul.archive li .post-details a:hover {
     width: 898px;
     background: url(../images/content.png);
 }
+.result-list{
+    margin-top: 200px;
+}
+.search-result{
+    border-bottom: dashed 1px #e5e5e5;
+    padding:20px 15px 15px 15px;
+
+}

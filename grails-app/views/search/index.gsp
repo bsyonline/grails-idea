@@ -7,23 +7,37 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page defaultCodec="none" %>
+
 <html>
 <head>
-
+    <meta name="layout" content="index"/>
   <title></title>
 </head>
 <body>
-    <table>
-        <tr>
-            <td>id</td>
-            <td>title</td>
-            <td>content</td>
-        </tr>
-    <g:each in="${searchResult}" var="s">
-        <td>${s.id}</td>
-        <td>${s.title}</td>
-        <td>${s.content}</td>
+
+<!-- content-wrap -->
+<div class="content-wrap">
+
+    <!-- content -->
+    <div class="content clearfix">
+    <div class="result-list">
+    <g:each in="${searchResult}" var="r" status="i">
+        <div class="search-result">
+            <div class="title"><g:link controller="post" action="show" id="${r.id}">${r.title}</g:link></div>
+            <div class="info">${r.dateCreated} ${r.author.username}</div>
+            <div class="content-text">
+                ${r.content}
+            </div>
+        </div>
     </g:each>
-    </table>
+    </div>
+
+        <!-- content -->
+    </div>
+
+    <!-- /content-out -->
+</div>
+
 </body>
 </html>
