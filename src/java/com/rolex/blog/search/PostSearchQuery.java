@@ -6,7 +6,6 @@
 package com.rolex.blog.search;
 
 import com.rolex.blog.Post;
-import com.rolex.blog.PostController;
 import com.rolex.blog.util.DirectoryUtil;
 import com.rolex.blog.util.StringUtil;
 import groovy.lang.GroovyClassLoader;
@@ -167,11 +166,7 @@ public class PostSearchQuery {
             } catch (IllegalAccessException e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
-            //readEmailCodeUrl方法名，null 参数值，没有为null
-
-
             Post post = (Post)groovyObject.invokeMethod("get", postId);
-            System.out.println(postId + " - " + post);
             retValue.add(post);
         }
         return retValue;

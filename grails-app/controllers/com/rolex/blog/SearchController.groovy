@@ -5,10 +5,11 @@ import com.rolex.blog.search.PostSearchQuery
 class SearchController {
 
     def index(String searchString) {
-        PostSearchQuery query = new PostSearchQuery()
-        query.setSearchString(searchString)
-        query.searchDocuments(0, 100);
-        List<Post> list = query.getPostResult();
-        render (view: 'index',model: [searchResult:list])
+        PostSearchQuery postQuery = new PostSearchQuery()
+        postQuery.setSearchString(searchString)
+        postQuery.searchDocuments(0, 100)
+        List<Post> posts = postQuery.getPostResult()
+
+        render (view: 'index',model: [searchResult:posts])
     }
 }

@@ -1,5 +1,6 @@
 package com.rolex.blog
 
+
 import grails.converters.JSON
 
 import static org.springframework.http.HttpStatus.*
@@ -106,8 +107,21 @@ class ReplyController {
         print params.content
         print params.post?.id
         print params.replyTo?.id
+
         Reply replyInstance = new Reply(params)
         replyInstance.save()
         render replyInstance as JSON
+    }
+
+    protected List<Reply> getRepliesByPostId(int id){
+        return Reply.findByPost(Post.get(id))
+    }
+
+    protected List<Reply> findAllReplies(){
+        return Reply.list()
+    }
+
+    protected Reply get(int id){
+        return Reply.get(id)
     }
 }

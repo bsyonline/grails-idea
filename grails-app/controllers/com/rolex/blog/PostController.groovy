@@ -68,6 +68,8 @@ class PostController {
 
         postInstance.save flush: true
 
+        PostIndexer.scheduleUpdatePostTask(postInstance)
+
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Post.label', default: 'Post'), postInstance.id])
@@ -86,6 +88,8 @@ class PostController {
         }
 
         postInstance.delete flush: true
+
+        PostIndexer.scheduleDeletePostTask(postInstance)
 
         request.withFormat {
             form multipartForm {
@@ -107,8 +111,11 @@ class PostController {
     }
 
     protected Post get(int id){
-        print "=================="
-        print Post.get(id)
         return Post.get(id)
     }
+
+    protected List<Post> findAllPosts(){
+        return Post.list()
+    }
+
 }

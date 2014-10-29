@@ -1,5 +1,6 @@
 package com.rolex.blog
 
+
 class Post {
 
     static constraints = {

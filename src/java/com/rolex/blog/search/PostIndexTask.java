@@ -15,16 +15,17 @@ import java.util.TimerTask;
  * Date: 14-10-28
  * version: 1.0
  */
-public class AddUpdatePostIndexTask extends TimerTask{
+public class PostIndexTask extends TimerTask{
 
     private Post post;
     private int operation;
     public static final int OPERATION_ADD = 0;
     public static final int OPERATION_UPDATE = 1;
+    public static final int OPERATION_DELETE = 2;
 
-    public AddUpdatePostIndexTask(){}
+    public PostIndexTask(){}
 
-    public AddUpdatePostIndexTask(Post post, int operation) {
+    public PostIndexTask(Post post, int operation) {
         this.post = post;
         this.operation = operation;
     }
@@ -38,8 +39,11 @@ public class AddUpdatePostIndexTask extends TimerTask{
                     PostIndexer.addPostToIndex(post);
                     break;
                 case OPERATION_UPDATE:
-                    PostIndexer.deletePostFromIndex(post);
+                    PostIndexer.deletePostFromIndex(post.getId());
                     PostIndexer.addPostToIndex(post);
+                    break;
+                case OPERATION_DELETE:
+                    PostIndexer.deletePostFromIndex(post.getId());
                     break;
                 default:
                     //log:no operation

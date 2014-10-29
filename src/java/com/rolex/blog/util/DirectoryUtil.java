@@ -28,4 +28,5 @@ public class DirectoryUtil {
         }
         return FSDirectory.open(dir);
     }
+
 }

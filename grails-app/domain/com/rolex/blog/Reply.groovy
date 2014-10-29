@@ -1,5 +1,6 @@
 package com.rolex.blog
 
+
 class Reply {
 
     static constraints = {
@@ -14,6 +15,7 @@ class Reply {
         version false
     }
 
+    int id
     Date lastUpdated
     Date dateCreated
     String content

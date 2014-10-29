@@ -16,9 +16,7 @@ import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.store.Directory;
-import org.apache.lucene.store.FSDirectory;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -57,9 +55,25 @@ public class PostIndexer {
      * @param post
      */
     public static void scheduleAddPostTask(Post post){
-        AddUpdatePostIndexTask addUpdatePostIndexTask = new AddUpdatePostIndexTask(post,AddUpdatePostIndexTask.OPERATION_ADD);
-        TimerUtil.getInstance().schedule(addUpdatePostIndexTask,0);
+        PostIndexTask postIndexTask = new PostIndexTask(post, PostIndexTask.OPERATION_ADD);
+        TimerUtil.getInstance().schedule(postIndexTask,0);
     }
+
+    public static void scheduleUpdatePostTask(Post post){
+        PostIndexTask postIndexTask = new PostIndexTask(post, PostIndexTask.OPERATION_UPDATE);
+        TimerUtil.getInstance().schedule(postIndexTask,0);
+    }
+
+    public static void scheduleRebuidPostTask(){
+        RebuildPostIndexTask rebuildPostIndexTask = new RebuildPostIndexTask();
+        TimerUtil.getInstance().schedule(rebuildPostIndexTask,0);
+    }
+
+    public static void scheduleDeletePostTask(Post post){
+        PostIndexTask deletePostIndexTask = new PostIndexTask(post,PostIndexTask.OPERATION_DELETE);
+        TimerUtil.getInstance().schedule(deletePostIndexTask,0);
+    }
+
     public static void addPostToIndex(Post post){
         Directory directory = null;
         IndexWriter writer = null;
@@ -198,7 +212,39 @@ public class PostIndexer {
         }
     }
 
+    public static void deletePostFromIndex(int postId) {
+        Directory directory = null;
+        IndexReader reader = null;
+        try {
+            directory = DirectoryUtil.getSearchPostIndexDir();
+            reader = IndexReader.open(directory, false/*readOnly*/);
+            if (reader == null) {
+                //log.warn("Cannot get the IndexReader");
+                return;
+            }
 
+            Term term = new Term(POST_ID, String.valueOf(postId));
+            int deletedCount = reader.deleteDocuments(term);
+            //log.debug("deletePostFromIndex: deleted posts = " + deletedCount);
+        } catch (IOException e) {
+            throw new RuntimeException("Error trying to delete post with postID = " + postId,e);
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    //log.debug("Error closing Lucene IndexReader", e);
+                }
+            }
+            if (directory != null) {
+                try {
+                    directory.close();
+                } catch (IOException e) {
+                    //log.debug("Cannot close directory.", e);
+                }
+            }
+        }
+    }
 
     public static void deleteContent(Directory directory){
 
