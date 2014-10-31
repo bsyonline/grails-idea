@@ -101,4 +101,29 @@ class UserController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def login() {
+        redirect(uri: "/login")
+    }
+
+    def signin(){
+        String username = params.username
+        String password = params.password.encodeAsPassword()
+        User user = User.findByUsername(username)
+        if(user && (user?.password==password)){
+            session.user = user
+            render (view: 'success')
+        }else{
+            redirect(uri: "/login")
+        }
+    }
+
+    def logout(){
+        session.invalidate()
+        redirect(uri: "/login")
+    }
+
+    def online={
+        render view:'online'
+    }
 }
