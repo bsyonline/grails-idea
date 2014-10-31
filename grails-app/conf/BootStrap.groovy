@@ -3,6 +3,7 @@ import com.rolex.blog.Post
 import com.rolex.blog.Reply
 import com.rolex.blog.Tag
 import com.rolex.blog.User
+import com.rolex.shop.Goods
 
 class BootStrap {
 
@@ -96,6 +97,13 @@ class BootStrap {
         print "$replies.size replies saved."
 
 
+        def goods = [
+                new Goods(title: 'iphone6',price: 5431),
+                new Goods(title: 'Nokia Lumia930',price: 2899),
+                new Goods(title: 'xiaomi4',price: 1799)
+        ]
+        goods*.save()
+        print "$goods.size goods saved."
     }
     def destroy = {
     }
