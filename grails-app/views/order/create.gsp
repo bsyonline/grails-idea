@@ -25,9 +25,17 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-            <g:render template="showCart" params="[page:'show']"/>
-
-            <g:link controller="order" action="create">submit</g:link><g:link controller="goods" action="index">shopping</g:link>
+            <g:render template="/order/showCart" params="${[cart:cart,page:'order']}"/>
+			<g:form url="[resource:orderInstance, action:'confirm']" >
+                <g:field type="text" name="cart.id" value="${cart?.id}"/>
+                <g:field type="text" name="price" value="${cart?.totalPrice()}" />
+				<fieldset class="form">
+					<g:render template="form"/>
+				</fieldset>
+				<fieldset class="buttons">
+					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+				</fieldset>
+			</g:form>
 		</div>
 	</body>
 </html>

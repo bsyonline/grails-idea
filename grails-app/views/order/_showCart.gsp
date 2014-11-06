@@ -7,14 +7,8 @@
 --%>
 
 <%@ page import="com.rolex.shop.Cart" contentType="text/html;charset=UTF-8" %>
-<html>
-<head>
-    <meta name="layout" content="main"/>
-  <title></title>
 
-</head>
-<body>
-<div>
+
     <g:if test="${cart?.items}">
         <div class="item-list">
             <div>
@@ -22,16 +16,16 @@
             </div>
             <g:each in="${cart.items}" status="i" var="c">
                 <span>${c.goods.title}</span>&nbsp;|&nbsp;<span>${c.goods.price}</span>&nbsp;|&nbsp;<span>${c.itemNum}</span>
-                <g:link action="removeFromCart" controller="goods" id="${c.id}">remove</g:link><br>
+                <g:if test="${page=='show'}">
+                <g:link action="removeFromCart" controller="order" id="${c.id}">remove</g:link>
+                </g:if><br>
             </g:each>
-            <span>${cart.totalPrice()}</span>
+            <span>totalPrice:${cart.totalPrice()}</span>
         </div>
     </g:if>
 
     <g:if test="${!cart?.items}">
         还没有宝贝
     </g:if>
-    <g:link action="save" controller="order">submit order</g:link>
-</div>
-</body>
-</html>
+
+

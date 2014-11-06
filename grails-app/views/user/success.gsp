@@ -15,5 +15,6 @@
     login successful!<br>
     welcome ${session.user.username}
     <g:link url="[controller:'user',action:'logout']" >logout</g:link>
+    <g:link url="[controller:'goods',action:'index']" >goods index</g:link>
 </body>
 </html>

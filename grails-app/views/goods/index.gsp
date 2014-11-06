@@ -16,19 +16,18 @@
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
         <li><g:link class="create" action="create"><g:message code="default.new.label"
                                                               args="[entityName]"/></g:link></li>
-        <li style="float: right;"><g:link class="create" action="showCart">
+        <li style="float: right;" onmouseover="javascript:$('.cart').show()" onmouseout="javascript:$('.cart').hide()"><g:link class="create" controller="order" action="showCart">
             <g:message code="default.goods.cart" default="Cart"/></g:link></li>
     </ul>
-    <div style="position: fixed;right: 30px">
+    <div style="float: right;border:solid 1px #e5e5e5;display: none;z-index: 9999" class="cart">
         <g:if test="${cart?.items}">
-            <div class="item-list">
-                <div>
-                    <span>title</span><span>price</span><span>itemNum</span>
-                </div>
+            <div class="item-list" style="width: 300px">
                 <g:each in="${cart.items}" status="i" var="c">
-                    <span>${c.goods.title}</span>&nbsp;|&nbsp;<span>${c.goods.price}</span>&nbsp;|&nbsp;<span>${c.itemNum}</span><br>
+                    <div style="width: 200px;float: left">${c.goods.title}</div>
+
+                    <div style="float: right">￥${c.goods.price}X${c.itemNum}</div>
                 </g:each>
-                <span>${cart.totalPrice}</span>
+
             </div>
         </g:if>
         <g:if test="${!cart?.items}">
@@ -53,7 +52,7 @@
 
             <g:sortableColumn property="type" title="${message(code: 'goods.type.label', default: 'Type')}"/>
 
-            ${message(code: 'goods.type.label', default: 'Type')}
+        <g:sortableColumn property="type" title="${message(code: 'goods.type.label', default: 'Type')}"/>
 
         </tr>
         </thead>
@@ -68,7 +67,7 @@
 
                 <td>${fieldValue(bean: goodsInstance, field: "type")}</td>
 
-                <td><g:link id="${goodsInstance.id}" controller="goods" action="addtoCart">add to cart</g:link></td>
+                <td><g:link id="${goodsInstance.id}" controller="order" action="addToCart">add to cart</g:link></td>
 
             </tr>
         </g:each>

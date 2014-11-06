@@ -23,9 +23,23 @@
 			</g:if>
 			<ol class="property-list order">
 			
-
+				<g:if test="${orderInstance?.paidDate}">
+				<li class="fieldcontain">
+					<span id="paidDate-label" class="property-label"><g:message code="order.paidDate.label" default="Paid Date" /></span>
+					
+						<span class="property-value" aria-labelledby="paidDate-label"><g:fieldValue bean="${orderInstance}" field="paidDate"/></span>
+					
+				</li>
+				</g:if>
 			
-
+				<g:if test="${orderInstance?.shipDate}">
+				<li class="fieldcontain">
+					<span id="shipDate-label" class="property-label"><g:message code="order.shipDate.label" default="Ship Date" /></span>
+					
+						<span class="property-value" aria-labelledby="shipDate-label"><g:fieldValue bean="${orderInstance}" field="shipDate"/></span>
+					
+				</li>
+				</g:if>
 			
 				<g:if test="${orderInstance?.no}">
 				<li class="fieldcontain">
@@ -99,22 +113,20 @@
 				</li>
 				</g:if>
 			
-
+				<g:if test="${orderInstance?.user}">
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="order.user.label" default="User" /></span>
+					
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${orderInstance?.user?.id}">${orderInstance?.user?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
 			
 			</ol>
-			<g:form action='save' controller="order" method="post">
-                <g:field type="text" name="no" value="${orderInstance?.no}"/>
-                <g:field type="text" name="status" value="${orderInstance?.status}"/>
-                <g:field type="text" name="address" value="${orderInstance?.address}"/>
-                <g:field type="text" name="cart.id" value="${orderInstance?.cart?.id}"/>
-                <g:field type="text" name="consignee" value="${orderInstance?.consignee}"/>
-                <g:field type="text" name="orderDate" value="${orderInstance?.orderDate}"/>
-                <g:field type="text" name="phone" value="${orderInstance?.phone}"/>
-                <g:field type="text" name="price" value="${orderInstance?.price}"/>
-
+			<g:form url="[resource:orderInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${orderInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="save" action="save" value="${message(code: 'default.button.save.label', default: 'save')}"  />
+					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
 		</div>

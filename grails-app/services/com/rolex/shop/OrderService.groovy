@@ -39,10 +39,14 @@ class OrderService {
             }else{
                 item = new Item(goods:goods,itemNum: 1,cart: cart)
             }
-            println "itemNum=$item.itemNum"
-            def d =item.save flush:true
-            println "itemNum=$d.itemNum"
+            item.save flush:true
         }
         return cart
+    }
+
+    def removeFromCart(session,goods){
+
+
+
     }
 }
