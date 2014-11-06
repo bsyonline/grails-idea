@@ -2,8 +2,6 @@ package com.rolex.shop
 
 class Goods {
 
-    def orderService
-
     static constraints = {
     }
 

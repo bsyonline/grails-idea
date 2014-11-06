@@ -7,6 +7,7 @@ class Item {
     static mapping = {
         table 's_item'
         version false
+        goods lazy: false
     }
 
     static belongsTo = [cart:Cart]

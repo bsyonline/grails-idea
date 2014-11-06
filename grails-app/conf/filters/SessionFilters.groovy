@@ -5,7 +5,7 @@ class SessionFilters {
     def filters = {
         all(controller: '*', action: '*') {
             before = {
-                if(session.user == null && controllerName in ['management','post','reply'] && !(actionName in ['index','show'])){
+                if(session.user == null && controllerName in ['management','post','reply','goods'] && !(actionName in ['index','show'])){
                     redirect(uri: '/login')
                     return false
                 }

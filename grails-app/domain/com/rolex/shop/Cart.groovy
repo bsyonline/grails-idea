@@ -11,15 +11,16 @@ class Cart {
     static mapping = {
         table 's_cart'
         version false
+        items lazy: false
     }
     CartStatus status = CartStatus.NEW
 
     public def totalPrice = {
         def price = 0.0
-        item.each{
-            price += it.itemNum * it.goods?.price
-            return price
+        items.each{
+            price = price.add(it.goods?.price.multiply(it.itemNum) as BigDecimal)
         }
+        return price
     }
 }
 

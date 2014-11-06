@@ -12,7 +12,11 @@ class GoodsController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        Cart cart = orderService.preparedCart(session)
+        Cart cart = null
+        if(session.user != null){
+            cart = orderService.preparedCart(session)
+        }
+
         params.max = Math.min(max ?: 10, 100)
         respond Goods.list(params), model:[goodsInstanceCount: Goods.count(),cart:cart]
     }
@@ -104,8 +108,4 @@ class GoodsController {
         }
     }
 
-    def addtoCart(Goods goodsInstance){
-        Cart cart = orderService.addToCart(session,goodsInstance)
-        redirect action:'index'
-    }
 }
