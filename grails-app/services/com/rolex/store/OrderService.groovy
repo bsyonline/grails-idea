@@ -1,4 +1,4 @@
-package com.rolex.shop
+package com.rolex.store
 
 import com.rolex.blog.User
 import grails.transaction.Transactional
@@ -30,23 +30,19 @@ class OrderService {
             }
         }
     }
-    def addToCart(session,goods) {
+    def addToCart(session,product) {
         def cart = preparedCart(session)
-        if(cart&&goods){
-            def item = Item.findByGoodsAndCart(goods,cart)
+        if(cart&&product){
+            def item = Item.findByGoodsAndCart(product,cart)
             if(item){
                 item.itemNum += 1
             }else{
-                item = new Item(goods:goods,itemNum: 1,cart: cart)
+                item = new Item(product:product,itemNum: 1,cart: cart)
             }
             item.save flush:true
         }
         return cart
     }
 
-    def removeFromCart(session,goods){
 
-
-
-    }
 }

@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: rolex
   Date: 14-10-31
-  Time: 上午10:52
+  Time: 下午12:16
   To change this template use File | Settings | File Templates.
 --%>
 
@@ -12,9 +12,8 @@
   <title></title>
 </head>
 <body>
-    login successful!<br>
-    welcome ${session.user.username}
-    <g:link url="[controller:'user',action:'logout']" >logout</g:link>
-    <g:link url="[controller:'product',action:'index']" >product index</g:link>
+<%
+    print session.user?.username
+%>
 </body>
 </html>

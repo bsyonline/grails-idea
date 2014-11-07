@@ -1,4 +1,4 @@
-package com.rolex.shop
+package com.rolex.store
 
 class Item {
 
@@ -11,7 +11,7 @@ class Item {
     }
 
     static belongsTo = [cart:Cart]
-    Goods goods
+    Product product
     int itemNum
 
 }

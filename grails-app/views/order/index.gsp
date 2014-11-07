@@ -1,5 +1,5 @@
 
-<%@ page import="com.rolex.shop.Order" %>
+<%@ page import="com.rolex.store.Order" %>
 <!DOCTYPE html>
 <html>
 	<head>

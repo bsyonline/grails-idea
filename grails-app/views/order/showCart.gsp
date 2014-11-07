@@ -27,7 +27,7 @@
 			</g:hasErrors>
             <g:render template="showCart" params="[page:'show']"/>
 
-            <g:link controller="order" action="create">submit</g:link><g:link controller="goods" action="index">shopping</g:link>
+            <g:link controller="order" action="create">submit</g:link><g:link controller="product" action="index">shopping</g:link>
 		</div>
 	</body>
 </html>

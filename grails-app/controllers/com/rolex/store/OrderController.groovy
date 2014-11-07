@@ -1,4 +1,4 @@
-package com.rolex.shop
+package com.rolex.store
 
 
 
@@ -91,9 +91,9 @@ class OrderController {
         }
     }
 
-    def addToCart(Goods goodsInstance){
-        Cart cart = orderService.addToCart(session,goodsInstance)
-        redirect (action:'index',controller: 'goods')
+    def addToCart(Product productInstance){
+        Cart cart = orderService.addToCart(session,productInstance)
+        redirect (action:'index',controller: 'product')
     }
 
     def removeFromCart(){

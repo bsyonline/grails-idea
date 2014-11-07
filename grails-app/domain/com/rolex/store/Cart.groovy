@@ -1,4 +1,4 @@
-package com.rolex.shop
+package com.rolex.store
 
 import com.rolex.blog.User
 

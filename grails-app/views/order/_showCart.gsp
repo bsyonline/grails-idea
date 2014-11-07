@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
-<%@ page import="com.rolex.shop.Cart" contentType="text/html;charset=UTF-8" %>
+<%@ page import="com.rolex.store.Cart" contentType="text/html;charset=UTF-8" %>
 
 
     <g:if test="${cart?.items}">
@@ -15,7 +15,7 @@
                 <span>title</span><span>price</span><span>itemNum</span>
             </div>
             <g:each in="${cart.items}" status="i" var="c">
-                <span>${c.goods.title}</span>&nbsp;|&nbsp;<span>${c.goods.price}</span>&nbsp;|&nbsp;<span>${c.itemNum}</span>
+                <span>${c.product.title}</span>&nbsp;|&nbsp;<span>${c.product.price}</span>&nbsp;|&nbsp;<span>${c.itemNum}</span>
                 <g:if test="${page=='show'}">
                 <g:link action="removeFromCart" controller="order" id="${c.id}">remove</g:link>
                 </g:if><br>

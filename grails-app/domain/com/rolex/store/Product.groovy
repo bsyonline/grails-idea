@@ -1,12 +1,12 @@
-package com.rolex.shop
+package com.rolex.store
 
-class Goods {
+class Product {
 
     static constraints = {
     }
 
     static mapping = {
-        table 's_goods'
+        table 's_product'
         version false
     }
     String title
