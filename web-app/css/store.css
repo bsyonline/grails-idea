@@ -21,7 +21,7 @@ header{
     position: absolute;
     right: 0;
     padding: 20px;
-
+    display: none;
 }
 .cart ul li ul li{
     width: 270px;
@@ -50,4 +50,23 @@ a:hover{
 .item-name{
     width: 220px;
     padding: 0 5px;
+}
+
+.product-gird{
+    float: left;
+    border: solid 1px #e5e5e5;
+    margin: 5px;
+    padding: 10px;
+    width: 218px;
+
+}
+.product-img{
+    text-align: center;
+
+}
+.product-gird:hover{
+    box-shadow: 0 0 4px rgb(114, 214, 238);
+}
+.product-info{
+    margin: 5px;
 }
