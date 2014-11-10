@@ -2,8 +2,8 @@ dataSource {
     pooled = true
     jmxExport = true
     driverClassName = "com.microsoft.sqlserver.jdbc.SQLServerDriver"
-    username = "sa"
-    password = "111111"
+    username = "sa1"
+    password = "1111111"
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -18,7 +18,7 @@ environments {
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:sqlserver://127.0.0.1:1433;databasename=blog_dev"
+            url = "jdbc:sqlserver://10.8.9.9:1433;databasename=blog_dev"
             logSql = true
         }
     }
