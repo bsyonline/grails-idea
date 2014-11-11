@@ -27,7 +27,7 @@
             <div class="title"><g:link controller="post" action="show" id="${r.id}">${r.title}</g:link></div>
             <div class="info">${r.dateCreated} ${r.author.username}</div>
             <div class="content-text">
-                ${r.content}
+                <g:highLight content="${r.content}" keyword="${flash.keyword}"/>
             </div>
         </div>
     </g:each>
