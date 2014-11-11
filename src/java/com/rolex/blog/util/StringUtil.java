@@ -77,8 +77,8 @@ public class StringUtil {
         if (str == null || str == "")
             return "";
         String s = str.replaceAll("<[^>]*>", "");// 去掉所有的html标记
-        if (s.length() > 25) {
-            s = s.substring(0, 25) + "...";
+        if (s.length() > 100) {
+            s = s.substring(0, 100) + "...";
         }
         return s;
     }
