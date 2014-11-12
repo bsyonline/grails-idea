@@ -3,6 +3,7 @@ import com.rolex.blog.Post
 import com.rolex.blog.Reply
 import com.rolex.blog.Tag
 import com.rolex.blog.User
+import com.rolex.map.Project
 import com.rolex.store.Product
 import com.rolex.store.Product
 
@@ -105,6 +106,14 @@ class BootStrap {
         ]
         products*.save()
         print "$products.size products saved."
+
+        /**********************************************************/
+
+        def projects = [
+                new Project(name: '东关南里小区6号楼',x: 116.256772,y: 40.2224,address: '东关南里小区6号楼'),
+                new Project(name: '蜀园饭庄(振兴路店)',x: 116.251567,y: 40.213901,address: '振兴路与富康路交叉口京科苑西区西')
+        ]
+        projects*.save()
     }
     def destroy = {
     }
