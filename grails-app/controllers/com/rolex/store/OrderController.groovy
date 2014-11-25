@@ -1,6 +1,6 @@
 package com.rolex.store
 
-
+import grails.converters.JSON
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -93,7 +93,8 @@ class OrderController {
 
     def addToCart(Product productInstance){
         Cart cart = orderService.addToCart(session,productInstance)
-        redirect (action:'index',controller: 'product')
+        //redirect (action:'index',controller: 'product')
+        render cart as JSON
     }
 
     def removeFromCart(){
@@ -113,6 +114,22 @@ class OrderController {
             cart = orderService.preparedCart(session)
         }
         render (view: 'showCart', model: [cart:cart])
+    }
+
+    def showItems(){
+        Cart cart = null
+        if(session.user != null){
+            cart = orderService.preparedCart(session)
+        }
+
+        String products = "["
+        cart?.items.each{
+            products += "{\"title\":\"" + it.product.title + "\",\"price\":\"" + it.product.price + "\",\"num\":\""+ it.itemNum+"\",\"totalPrice\":\"" + it.cart.totalPrice()+"\"},"
+        }
+
+        products += products[0..-1] + "]"
+        println products
+        render products
     }
 
     def confirm(Order orderInstance){

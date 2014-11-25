@@ -33,7 +33,7 @@ class OrderService {
     def addToCart(session,product) {
         def cart = preparedCart(session)
         if(cart&&product){
-            def item = Item.findByGoodsAndCart(product,cart)
+            def item = Item.findByProductAndCart(product,cart)
             if(item){
                 item.itemNum += 1
             }else{

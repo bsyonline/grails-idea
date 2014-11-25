@@ -21,7 +21,7 @@
                 <div class="product-info">
                     <div>${fieldValue(bean: productInstance, field: "title")}</div>
                     <div>${fieldValue(bean: productInstance, field: "price")}</div>
-                    <div><g:link id="${productInstance.id}" controller="order" action="addToCart">add to cart</g:link></div>
+                    <div><g:remoteLink id="${productInstance.id}" controller="order" action="addToCart">add to cart</g:remoteLink></div>
                 </div>
             </div>
         <div class="product-gird">
@@ -33,7 +33,7 @@
             <div class="product-info">
                 <div>${fieldValue(bean: productInstance, field: "title")}</div>
                 <div>${fieldValue(bean: productInstance, field: "price")}</div>
-                <div><g:link id="${productInstance.id}" controller="order" action="addToCart">add to cart</g:link></div>
+                <div><g:remoteLink id="${productInstance.id}" controller="order" action="addToCart">add to cart</g:remoteLink></div>
             </div>
         </div>
     </g:each>

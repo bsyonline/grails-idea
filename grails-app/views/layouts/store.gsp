@@ -23,7 +23,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>grails-blog</title>
+    <title>grails-store</title>
 
 
     <!--[if lt IE 9]>
@@ -41,9 +41,12 @@
     <header>
         <div class="cart">
             <ul>
-                <li>
-                    <a href="#"><span>cart</span></a>
-                    <ul>
+                <li class="cart-label">
+                    <div class="cart-label-text">
+                        <g:link action="showCart" controller="order"><span>cart</span></g:link>
+                    </div>
+
+                    <ul class="cart-body">
                         <li><span>aaaa</span></li>
                         <li>
                             <div class="cart-item">
@@ -76,7 +79,26 @@
     </header>
     <g:layoutBody/>
 </div>
+<g:javascript>
+    $(function(){
+        $(".cart-label").bind("mouseover",function(){
+            $(".cart-body").show();
 
+        });
+        $(".cart-label").bind("mouseout",function(){
+            $(".cart-body").hide();
+        });
+        $.post("../order/showItems",null,function(data){
+
+            alert(1)
+
+
+
+        },'json');
+    });
+
+
+</g:javascript>
 
 </body>
 </html>

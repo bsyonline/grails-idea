@@ -18,20 +18,20 @@ environments {
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:sqlserver://10.8.9.9:1433;databasename=blog_dev"
+            url = "jdbc:sqlserver://10.8.9.9:1433;databasename=idea_dev"
             logSql = true
         }
     }
     test {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:sqlserver://127.0.0.1:1433;databasename=blog_test"
+            url = "jdbc:sqlserver://127.0.0.1:1433;databasename=idea_test"
         }
     }
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:sqlserver://127.0.0.1:1433;databasename=blog_prod"
+            url = "jdbc:sqlserver://127.0.0.1:1433;databasename=idea_prod"
             properties {
                 // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
                 jmxEnabled = true

@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="layout" content="main">
+		<meta name="layout" content="store">
 		<g:set var="entityName" value="${message(code: 'order.label', default: 'Order')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#create-order" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
 		<div id="create-order" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -25,9 +17,13 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-            <g:render template="showCart" params="[page:'show']"/>
-
-            <g:link controller="order" action="create">submit</g:link><g:link controller="product" action="index">shopping</g:link>
+			<g:render template="/order/showCart" params="${[cart:cart,page:'order']}"/>
+			<div class="save-btn">
+            	<g:link controller="order" action="create">submit</g:link>
+			</div>
+			<div class="back-btn">
+				<g:link controller="product" action="index">shopping</g:link>
+			</div>
 		</div>
 	</body>
 </html>

@@ -23,7 +23,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>grails-blog</title>
+    <title>grails-map</title>
 
 
     <!--[if lt IE 9]>
