@@ -47,31 +47,17 @@
                     </div>
 
                     <ul class="cart-body">
-                        <li><span>aaaa</span></li>
-                        <li>
-                            <div class="cart-item">
-                                <div class="item-icon">
-                                    <a><img src="${resource(dir: 'images', file: 'avatar.jpg')}"></a>
+                        <li><div class="cart-body-title">最近加入购物车的商品</div></li>
+                        <div class="product-list">
+                            <li>
+                                <div class="cart-item">
+                                    没有商品
                                 </div>
-                                <div class="item-info">
-                                    <div class="item-name">iphone 6 plusiphone 6 plusiphone 6 plusiphone 6 plus</div>
-                                    <div><span>￥1000.00</span>x<span>2</span></div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="cart-item">
-                                <div class="item-icon">
-                                    <a><img src="${resource(dir: 'images', file: 'avatar.jpg')}"></a>
-                                </div>
-                                <div class="item-info">
-                                    <div>iphone 6 plus</div>
-                                    <div><span>￥1000.00</span>x<span>2</span></div>
-                                </div>
-                            </div>
-                        </li>
+                            </li>
+                        </div>
 
-                        <li><a><span>aaaa</span></a><a><span>bbbb</span></a></li>
+
+                        <li><div class="checkout"><g:link controller="order" action="create"><span>去结算</span></g:link></div></li>
                     </ul>
                 </li>
             </ul>
@@ -83,17 +69,23 @@
     $(function(){
         $(".cart-label").bind("mouseover",function(){
             $(".cart-body").show();
-
         });
         $(".cart-label").bind("mouseout",function(){
             $(".cart-body").hide();
         });
         $.post("../order/showItems",null,function(data){
-
-            alert(1)
-
-
-
+            if($(data).length!=0){
+                var totalPrice = data[0].totalPrice;
+                var content = "";
+                $(data).each(function(i){
+                    var title = data[i].title;
+                    var price = data[i].price;
+                    var num = data[i].num
+                    content += "<li><div class='cart-item'><div class='item-icon'><a><img src='${resource(dir: 'images', file: 'rBEhVFIxaGkIAAAAAAGEV0SZGCMAADEsQOGrOkAAYRv640.jpg')}'></a></div><div class='item-info'><div class='item-name'>"+title+"</div><div><span>"+price+"</span>&nbsp;x&nbsp;<span>"+num+"</span></div></div></div></li>";
+                });
+                content += "<li><div class='total-price'>totalprice:"+totalPrice+"</div></li>"
+                $(".product-list").empty().html(content);
+            }
         },'json');
     });
 

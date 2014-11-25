@@ -118,16 +118,21 @@ class OrderController {
 
     def showItems(){
         Cart cart = null
+        String products = "["
         if(session.user != null){
             cart = orderService.preparedCart(session)
+            if(cart?.items){
+                cart?.items.each{
+                    products += "{\"title\":\"" + it.product.title + "\",\"price\":\"" + it.product.price + "\",\"num\":\""+ it.itemNum+"\",\"totalPrice\":\"" + it.cart.totalPrice()+"\"},"
+                }
+                products = products[0..-2] + "]"
+            }else{
+                products += "]"
+            }
+        }else{
+            products += "]"
         }
 
-        String products = "["
-        cart?.items.each{
-            products += "{\"title\":\"" + it.product.title + "\",\"price\":\"" + it.product.price + "\",\"num\":\""+ it.itemNum+"\",\"totalPrice\":\"" + it.cart.totalPrice()+"\"},"
-        }
-
-        products += products[0..-1] + "]"
         println products
         render products
     }

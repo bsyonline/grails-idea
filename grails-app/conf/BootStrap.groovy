@@ -4,6 +4,7 @@ import com.rolex.blog.Reply
 import com.rolex.blog.Tag
 import com.rolex.blog.User
 import com.rolex.map.Project
+import com.rolex.store.Image
 import com.rolex.store.Product
 import com.rolex.store.Product
 
@@ -99,6 +100,7 @@ class BootStrap {
         print "$replies.size replies saved."
 
 
+
         def products = [
                 new Product(title: 'iphone6',price: 5431),
                 new Product(title: 'Nokia Lumia930',price: 2899),
@@ -106,6 +108,23 @@ class BootStrap {
         ]
         products*.save()
         print "$products.size products saved."
+
+        def images = [
+                new Image(name: 'rBEhVFIxaGkIAAAAAAGEV0SZGCMAADEsQOGrOkAAYRv640.jpg'),
+                new Image(name: 'rBEhVFIxaGkIAAAAAAGEV0SZGCMAADEsQOGrOkAAYRv640.jpg'),
+                new Image(name: 'TB1WjYnFVXXXXa1XpXXXXXXXXXX.jpg_120x120.jpg'),
+                new Image(name: 'TB2x2kqaXXXXXbyXXXXXXXXXXXX_!!1711191736.jpg_430x430q90.jpg'),
+                new Image(name: 'TB1qfmUFVXXXXb7XXXX1SesFpXX_120634.jpg_220x220.jpg'),
+                new Image(name: 'TB1rZZJFVXXXXaRXpXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg')
+        ]
+        images[0].product = products[0]
+        images[1].product = products[0]
+        images[2].product = products[1]
+        images[3].product = products[1]
+        images[4].product = products[2]
+        images[5].product = products[2]
+
+        images*.save()
 
         /**********************************************************/
 

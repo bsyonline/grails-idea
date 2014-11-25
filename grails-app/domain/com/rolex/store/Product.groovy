@@ -5,6 +5,7 @@ class Product {
     static constraints = {
     }
 
+    static hasMany = [images:Image]
     static mapping = {
         table 's_product'
         version false
