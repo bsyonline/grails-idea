@@ -21,30 +21,21 @@
                 <div class="product-info">
                     <div>${fieldValue(bean: productInstance, field: "title")}</div>
                     <div>${fieldValue(bean: productInstance, field: "price")}</div>
-                    <div><g:remoteLink id="${productInstance.id}" controller="order" action="addToCart">add to cart</g:remoteLink></div>
+                    <div class="btn-add">
+                        <g:remoteLink id="${productInstance.id}" controller="order" action="addToCart" onclick="flyToCart();">add to cart</g:remoteLink>
+                    </div>
                 </div>
             </div>
-        <div class="product-gird">
-            <div class="product-img">
-                <g:link action="show" id="${productInstance.id}">
-                    <g:img dir="images" file="${productInstance.images[1]?.name}"/>
-                </g:link>
-            </div>
-            <div class="product-info">
-                <div>${fieldValue(bean: productInstance, field: "title")}</div>
-                <div>${fieldValue(bean: productInstance, field: "price")}</div>
-                <div><g:remoteLink id="${productInstance.id}" controller="order" action="addToCart" onsuccess="addToCart(data);">add to cart</g:remoteLink></div>
-            </div>
-        </div>
+
     </g:each>
 
 <div class="pagination">
     <g:paginate total="${productInstanceCount ?: 0}"/>
 </div>
 <g:javascript>
-    function addToCart(data){
-    alert(data)
+    function addToCart(){
         $.post("../order/showItems",null,function(data){
+
             if($(data).length!=0){
                 var totalPrice = data[0].totalPrice;
                 var content = "";
@@ -59,6 +50,27 @@
             }
         },'json');
     }
+    var div;
+    $(function(){
+        $(".btn-add").bind("click",function(){
+            addToCart();
+            div = $(this).parent().siblings(".product-img").clone();
+            div.appendTo($(this).parent().siblings(".product-img")).css("position","fixed");
+            div.animate({
+                top:"10px",
+                right:"160px",
+                width:'40px',
+                height:'40px',
+                opacity:'1'
+            },700,function(){
+                div.find("img").css("width","40px").css("height","40px").css("z-index",'9999').css("position",'absolute');
+                setInterval(function(){
+                    div.fadeOut(100);
+                },300);
+            });
+        });
+    });
+
 </g:javascript>
 </body>
 </html>

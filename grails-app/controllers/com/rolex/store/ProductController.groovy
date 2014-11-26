@@ -17,8 +17,7 @@ class ProductController {
             cart = orderService.preparedCart(session)
         }
 
-        params.max = Math.min(max ?: 10, 100)
-        respond Product.list(params), model:[productInstanceCount: Product.count(),cart:cart]
+        respond Product.list(max: Math.min(max ?: 10, 100),sort: 'lastUpdated'), model:[productInstanceCount: Product.count(),cart:cart]
     }
 
     def show(Product productInstance) {

@@ -102,27 +102,33 @@ class BootStrap {
 
 
         def products = [
-                new Product(title: 'iphone6',price: 5431),
-                new Product(title: 'Nokia Lumia930',price: 2899),
-                new Product(title: 'xiaomi4',price: 1799)
+                new Product(title: 'iphone6',price: 5431,lastUpdated: new Date()),
+                new Product(title: 'Samsung Galaxy Note3',price: 3699,lastUpdated: new Date()),
+                new Product(title: 'HTC M8',price: 2599,lastUpdated: new Date()),
+                new Product(title: 'HUAWEI Honor 6',price: 1999,lastUpdated: new Date()),
+                new Product(title: 'Nokia Lumia930',price: 2899,lastUpdated: new Date()),
+                new Product(title: 'Blackberry 9900',price: 1200,lastUpdated: new Date()),
+                new Product(title: 'xiaomi4',price: 1799,lastUpdated: new Date())
         ]
         products*.save()
         print "$products.size products saved."
 
         def images = [
                 new Image(name: 'rBEhVFIxaGkIAAAAAAGEV0SZGCMAADEsQOGrOkAAYRv640.jpg'),
-                new Image(name: 'rBEhVFIxaGkIAAAAAAGEV0SZGCMAADEsQOGrOkAAYRv640.jpg'),
-                new Image(name: 'TB1WjYnFVXXXXa1XpXXXXXXXXXX.jpg_120x120.jpg'),
+                new Image(name: 'T1GZHjFUBaXXcXbVA1_040057.jpg_b.jpg'),
+                new Image(name: 'T1mxq_FUFcXXbo7NIU_014802.jpg_b.jpg'),
+                new Image(name: 'TB1FJaVFVXXXXbIXXXXVpKn.VXX_112018.jpg_b.jpg'),
                 new Image(name: 'TB2x2kqaXXXXXbyXXXXXXXXXXXX_!!1711191736.jpg_430x430q90.jpg'),
-                new Image(name: 'TB1qfmUFVXXXXb7XXXX1SesFpXX_120634.jpg_220x220.jpg'),
+                new Image(name: 'T2iZyFXrJXXXXXXXXX_!!274998653.jpg_b.jpg'),
                 new Image(name: 'TB1rZZJFVXXXXaRXpXXXXXXXXXX_!!0-item_pic.jpg_430x430q90.jpg')
         ]
         images[0].product = products[0]
-        images[1].product = products[0]
-        images[2].product = products[1]
-        images[3].product = products[1]
-        images[4].product = products[2]
-        images[5].product = products[2]
+        images[1].product = products[1]
+        images[2].product = products[2]
+        images[3].product = products[3]
+        images[4].product = products[4]
+        images[5].product = products[5]
+        images[6].product = products[6]
 
         images*.save()
 

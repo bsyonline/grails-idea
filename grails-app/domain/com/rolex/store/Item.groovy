@@ -1,6 +1,6 @@
 package com.rolex.store
 
-class Item {
+class Item implements Comparable{
 
     static constraints = {
     }
@@ -14,4 +14,8 @@ class Item {
     Product product
     int itemNum
 
+    @Override
+    int compareTo(Object o) {
+        return this.id.compareTo(((Item)o).id)
+    }
 }

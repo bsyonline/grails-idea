@@ -13,6 +13,7 @@ class Cart {
         version false
         items lazy: false
     }
+    SortedSet items
     CartStatus status = CartStatus.NEW
 
     public def totalPrice = {

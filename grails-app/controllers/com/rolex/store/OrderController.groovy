@@ -93,8 +93,19 @@ class OrderController {
 
     def addToCart(Product productInstance){
         Cart cart = orderService.addToCart(session,productInstance)
+        cart = orderService.preparedCart(session)
         //redirect (action:'index',controller: 'product')
-        render cart as JSON
+        String products = "["
+        if(cart?.items){
+            cart?.items.each{
+                products += "{\"title\":\"" + it.product.title + "\",\"price\":\"" + it.product.price + "\",\"num\":\""+ it.itemNum+"\",\"totalPrice\":\"" + it.cart.totalPrice()+"\"},"
+            }
+            products = products[0..-2] + "]"
+        }else{
+            products += "]"
+        }
+        println products
+        render products
     }
 
     def removeFromCart(){
@@ -133,7 +144,7 @@ class OrderController {
             products += "]"
         }
 
-        println products
+        //println products
         render products
     }
 

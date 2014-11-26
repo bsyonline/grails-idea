@@ -13,4 +13,5 @@ class Product {
     String title
     String price
     int type
+    Date lastUpdated
 }

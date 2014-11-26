@@ -107,11 +107,12 @@ a:hover{
     margin: 5px;
     padding: 10px;
     width: 218px;
-
+    position: relative;
 }
 .product-img{
     text-align: center;
     max-width: 210px;
+    position: relative;
 }
 .product-img img{
     max-width: 200px;

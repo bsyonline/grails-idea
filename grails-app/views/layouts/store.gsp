@@ -56,8 +56,10 @@
                             </li>
                         </div>
 
+                        <g:if test="${session.user}">
+                            <li><div class="checkout"><g:link controller="order" action="create"><span>去结算</span></g:link></div></li>
+                        </g:if>
 
-                        <li><div class="checkout"><g:link controller="order" action="create"><span>去结算</span></g:link></div></li>
                     </ul>
                 </li>
             </ul>
