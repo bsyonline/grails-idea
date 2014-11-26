@@ -38,9 +38,12 @@ class OrderService {
                 item.itemNum += 1
             }else{
                 item = new Item(product:product,itemNum: 1,cart: cart)
+
             }
             item.save flush:true
+            cart.items << item
         }
+
         return cart
     }
 

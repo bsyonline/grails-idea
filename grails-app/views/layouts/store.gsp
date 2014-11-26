@@ -83,7 +83,8 @@
                     var title = data[i].title;
                     var price = data[i].price;
                     var num = data[i].num
-                    content += "<li><div class='cart-item'><div class='item-icon'><a><img src='${resource(dir: 'images', file: 'rBEhVFIxaGkIAAAAAAGEV0SZGCMAADEsQOGrOkAAYRv640.jpg')}'></a></div><div class='item-info'><div class='item-name'>"+title+"</div><div><span>"+price+"</span>&nbsp;x&nbsp;<span>"+num+"</span></div></div></div></li>";
+                    var image = data[i].image
+                    content += "<li><div class='cart-item'><div class='item-icon'><a><img src='${resource(dir: '/')}/images/"+image+"'></a></div><div class='item-info'><div class='item-name'>"+title+"</div><div><span>"+price+"</span>&nbsp;x&nbsp;<span>"+num+"</span></div></div></div></li>";
                 });
                 content += "<li><div class='total-price'>totalprice:"+totalPrice+"</div></li>"
                 $(".product-list").empty().html(content);

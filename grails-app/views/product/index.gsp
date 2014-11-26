@@ -22,7 +22,7 @@
                     <div>${fieldValue(bean: productInstance, field: "title")}</div>
                     <div>${fieldValue(bean: productInstance, field: "price")}</div>
                     <div class="btn-add">
-                        <g:remoteLink id="${productInstance.id}" controller="order" action="addToCart" onclick="flyToCart();">add to cart</g:remoteLink>
+                        <g:remoteLink id="${productInstance.id}" controller="order" action="addToCart" onclick="flyToCart();" onSuccess="addToCart(data)">add to cart</g:remoteLink>
                     </div>
                 </div>
             </div>
@@ -33,22 +33,21 @@
     <g:paginate total="${productInstanceCount ?: 0}"/>
 </div>
 <g:javascript>
-    function addToCart(){
-        $.post("../order/showItems",null,function(data){
-
-            if($(data).length!=0){
-                var totalPrice = data[0].totalPrice;
+    function addToCart(data){
+        var arr = $(eval('(' + data + ')'));
+            if(arr.length!=0){
+                var totalPrice = arr[0].totalPrice;
                 var content = "";
-                $(data).each(function(i){
-                    var title = data[i].title;
-                    var price = data[i].price;
-                    var num = data[i].num
-                    content += "<li><div class='cart-item'><div class='item-icon'><a><img src='${resource(dir: 'images', file: 'rBEhVFIxaGkIAAAAAAGEV0SZGCMAADEsQOGrOkAAYRv640.jpg')}'></a></div><div class='item-info'><div class='item-name'>"+title+"</div><div><span>"+price+"</span>&nbsp;x&nbsp;<span>"+num+"</span></div></div></div></li>";
+                arr.each(function(i){
+                    var title = arr[i].title;
+                    var price = arr[i].price;
+                    var num = arr[i].num
+                    var image = arr[i].image
+                    content += "<li><div class='cart-item'><div class='item-icon'><a><img src='${resource(dir:"/")}/images/"+image+"'></a></div><div class='item-info'><div class='item-name'>"+title+"</div><div><span>"+price+"</span>&nbsp;x&nbsp;<span>"+num+"</span></div></div></div></li>";
                 });
                 content += "<li><div class='total-price'>totalprice:"+totalPrice+"</div></li>"
                 $(".product-list").empty().html(content);
             }
-        },'json');
     }
     var div;
     $(function(){
