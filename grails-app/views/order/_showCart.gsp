@@ -9,22 +9,23 @@
 <%@ page import="com.rolex.store.Cart" contentType="text/html;charset=UTF-8" %>
 
 ${page}
-    <g:if test="${cart?.items}">
+
         <div class="item-list">
             <div class="item-list-title">
-                <div class="label-1">product</div>
-                <div class="label-2">type</div>
-                <div class="label-2">price</div>
-                <div class="label-2">itemNum</div>
-                <div class="label-2">amount</div>
-                <div class="label-2">operation</div>
+                <div class="label-1">商品</div>
+                <div class="label-2">属性</div>
+                <div class="label-2">单价</div>
+                <div class="label-2">数量</div>
+                <div class="label-2">总价</div>
+                <div class="label-2"></div>
             </div>
+        <g:if test="${cart?.items}">
             <g:each in="${cart.items}" status="i" var="c">
                 <div class="item-list-content-warp">
                     <div class="item-list-content-row">
                         <div class="label-1">
                             <div class="shortcut">
-                                <img src="${resource(dir:'images',file: 'rBEhVFIxaGkIAAAAAAGEV0SZGCMAADEsQOGrOkAAYRv640.jpg')}"  />
+                                <g:img dir="images" file="${c.product.images[0].name}"/>
                             </div>
                             <div>
                                 ${c.product.title}
@@ -44,11 +45,17 @@ ${page}
                 </div>
             </g:each>
             <div class="total">totalPrice:${cart.totalPrice()}</div>
+        </g:if>
+        <g:if test="${!cart?.items}">
+            <div class="item-list-empty">
+                <div class="item-list-content-row">
+                    还没有宝贝
+                </div>
+            </div>
+            <div class="total">totalPrice:0.00</div>
+        </g:if>
         </div>
-    </g:if>
 
-    <g:if test="${!cart?.items}">
-        还没有宝贝
-    </g:if>
+
 
 

@@ -98,7 +98,7 @@ class OrderController {
         String products = "["
         if(cart?.items){
             cart?.items.each{
-                products += "{\"title\":\"" + it.product.title + "\",\"price\":\"" + it.product.price + "\",\"num\":\""+ it.itemNum+"\",\"totalPrice\":\"" + it.cart.totalPrice()+"\"},"
+                products += "{\"title\":\"" + it.product.title + "\",\"price\":\"" + it.product.price + "\",\"image\":\"" + it.product.images[0].name + "\",\"num\":\""+ it.itemNum+"\",\"totalPrice\":\"" + it.cart.totalPrice()+"\"},"
             }
             products = products[0..-2] + "]"
         }else{
@@ -134,7 +134,7 @@ class OrderController {
             cart = orderService.preparedCart(session)
             if(cart?.items){
                 cart?.items.each{
-                    products += "{\"title\":\"" + it.product.title + "\",\"price\":\"" + it.product.price + "\",\"num\":\""+ it.itemNum+"\",\"totalPrice\":\"" + it.cart.totalPrice()+"\"},"
+                    products += "{\"title\":\"" + it.product.title + "\",\"price\":\"" + it.product.price + "\",\"image\":\"" + it.product.images[0].name + "\",\"num\":\""+ it.itemNum+"\",\"totalPrice\":\"" + it.cart.totalPrice()+"\"},"
                 }
                 products = products[0..-2] + "]"
             }else{

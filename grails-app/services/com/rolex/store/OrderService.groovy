@@ -40,6 +40,7 @@ class OrderService {
                 item = new Item(product:product,itemNum: 1,cart: cart)
             }
             item.save flush:true
+            cart.items << item
         }
         return cart
     }

@@ -13,6 +13,10 @@ header{
 .cart ul li a{
     margin-right: 10px;
 }
+.product-list{
+    overflow-y: auto;height:auto;max-height: 200px;width: 290px;
+    margin-bottom: 10px;
+}
 .cart-body{
     background: none repeat scroll 0 0 #fff;
     border: 1px solid #e0e0e0;
@@ -20,11 +24,12 @@ header{
     /*box-shadow: 0 0 4px #e0e0e0;*/
     position: absolute;
     right: 0;
-    padding: 20px;
+    padding: 20px 2px 20px 20px;
     display: none;
     z-index: 98;
     margin-top: 38px;
     margin-right: -1px;
+    overflow-y: auto;height:auto;max-height: 400px;
 }
 .cart-body-title{
     text-align: left;
@@ -56,6 +61,34 @@ header{
     border-style: solid;
     border-width: 1px;
     /*box-shadow: 0 0 4px #e0e0e0;*/
+}
+.btn-view{
+    border: solid 1px #e5e5e5;
+    width: 200px;
+    float: right;
+    margin-right: 20px;
+
+}
+.btn-view a{
+    display: block;height: 100%;
+    width: 100%;padding: 8px 0;
+}
+.checkout a{
+    display: block;
+    padding: 5px 0;
+    height: 100%;
+    width: 100%;
+}
+.cart-label-text a{
+    height: 100%;
+    width: 100%;display: block;
+}
+.cart-empty{
+    width:290px;
+}
+.cart-empty-text{
+    float: left;
+    padding: 8px 0;
 }
 ul,li{
     list-style: none;
@@ -93,12 +126,12 @@ a:hover{
     border: solid 1px #e5e5e5;
     margin-top: 5px;
     height: 35px;
-    padding: 5px 0;
+
 }
 .total-price{
     text-align: right;
     height: 30px;
-    padding-top: 5px;
+    margin-right: 20px;
 }
 
 .product-gird{
@@ -141,6 +174,15 @@ a:hover{
     padding: 20px 10px;
     height: 100%;
 }
+.item-list-empty{
+    height:50px;
+    margin: 5px 0;
+    text-align: center;
+}
+.item-list-empty .item-list-content-row{
+    padding: 15px 10px 30px 10px;
+    height: 100%;
+}
 .item-list-title div,.item-list-content-row div{
     float:left;
     text-align: center;
@@ -167,8 +209,10 @@ a:hover{
 }
 .total{
     float:right;
-    padding:10px 0;
+    padding:10px;
     margin-right: 150px;
+    width:150px;
+    text-align: right;
 }
 .save-btn{
     float:right;
@@ -179,8 +223,7 @@ a:hover{
     cursor: pointer;
     display: block;
     text-align: center;
-    padding: 5px 0;
-    margin-right: -257px;
+    margin-right: -300px;
 }
 .back-btn{
     border: solid 1px #e5e5e5;
@@ -190,8 +233,16 @@ a:hover{
     cursor: pointer;
     display: block;
     text-align: center;
-    padding: 5px 0;
+
+}
+.back-btn a,.save-btn a{
+    width: 100%;
+    height: 100%;
+    display: block;padding: 5px 0;
 }
 .save-btn:hover,.back-btn:hover{
     background-color: #e8e8e8;
+}
+.disabled{
+    color:#e5e5e5;
 }

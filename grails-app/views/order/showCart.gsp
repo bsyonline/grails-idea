@@ -19,7 +19,12 @@
 			</g:hasErrors>
 			<g:render template="/order/showCart" params="${[cart:cart,page:'order']}"/>
 			<div class="save-btn">
-            	<g:link controller="order" action="create">submit</g:link>
+				<g:if test="${!cart?.items}">
+            		<a href="javascript:void(0);" class="disabled">submit</a>
+				</g:if>
+				<g:if test="${cart?.items}">
+					<g:link controller="order" action="create">submit</g:link>
+				</g:if>
 			</div>
 			<div class="back-btn">
 				<g:link controller="product" action="index">shopping</g:link>
