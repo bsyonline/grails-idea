@@ -18,9 +18,17 @@
 			</ul>
 			</g:hasErrors>
 			<g:render template="/order/showCart" params="${[cart:cart,page:'order']}"/>
-			<div class="save-btn">
-            	<g:link controller="order" action="create">submit</g:link>
-			</div>
+				<g:if test="${!cart?.items}">
+					<div class="save-btn-disabled">
+            			<a href="javascript:void(0);" class="disabled">submit</a>
+					</div>
+				</g:if>
+				<g:if test="${cart?.items}">
+					<div class="save-btn">
+						<g:link controller="order" action="create">submit</g:link>
+					</div>
+				</g:if>
+
 			<div class="back-btn">
 				<g:link controller="product" action="index">shopping</g:link>
 			</div>

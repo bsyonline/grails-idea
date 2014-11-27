@@ -43,23 +43,39 @@
             <ul>
                 <li class="cart-label">
                     <div class="cart-label-text">
-                        <g:link action="showCart" controller="order"><span>cart</span></g:link>
+                        <g:link action="showCart" controller="order"><span><g:message code="default.store.cart" default="购物车" /></span></g:link>
                     </div>
 
                     <ul class="cart-body">
-                        <li><div class="cart-body-title">最近加入购物车的商品</div></li>
-                        <div class="product-list">
+
                             <li>
-                                <div class="cart-item">
-                                    没有商品
-                                </div>
+                                <g:if test="${session.user }">
+                                <div class="cart-body-title">最近加入购物车的商品</div>
+                                </g:if>
+                                <g:if test="${!session.user }">
+                                <div class="cart-body-title">购物车是空的</div>
+                                </g:if>
                             </li>
-                        </div>
+                            <div class="product-list-warp">
+                                <div class="product-list">
+                                    <li>
 
-                        <g:if test="${session.user}">
-                            <li><div class="checkout"><g:link controller="order" action="create"><span>去结算</span></g:link></div></li>
-                        </g:if>
-
+                                    </li>
+                                </div>
+                            </div>
+                            <li>
+                                <g:if test="${session.user}">
+                                <div class="checkout"><g:link controller="order" action="create"><span>去结算</span></g:link></div>
+                                </g:if>
+                                <g:if test="${!session.user}">
+                                <div class="checkout"><g:link controller="order" action="showCart"><span>查看购物车</span></g:link></div>
+                                </g:if>
+                            </li>
+                        %{--<g:if test="${!session.user}">
+                            <div class="cart-empty">
+                                <div class="cart-empty-text">没有商品</div><div class="btn-view"><g:link controller="order" action="showCart" aria-disabled="true">View Cart</g:link></div>
+                            </div>
+                        </g:if>--}%
                     </ul>
                 </li>
             </ul>
@@ -75,19 +91,22 @@
         $(".cart-label").bind("mouseout",function(){
             $(".cart-body").hide();
         });
-        $.post("../order/showItems",null,function(data){
+        $.post("${resource(dir:"/")}order/showItems",null,function(data){
             if($(data).length!=0){
                 var totalPrice = data[0].totalPrice;
-                var content = "";
+                var content = "<li><div class='cart-body-title'>最近加入购物车的商品</div></li><div class='product-list-warp'><div class='product-list'>";
                 $(data).each(function(i){
-                    var title = data[i].title;
-                    var price = data[i].price;
-                    var num = data[i].num
-                    var image = data[i].image
-                    content += "<li><div class='cart-item'><div class='item-icon'><a><img src='${resource(dir: '/')}/images/"+image+"'></a></div><div class='item-info'><div class='item-name'>"+title+"</div><div><span>"+price+"</span>&nbsp;x&nbsp;<span>"+num+"</span></div></div></div></li>";
+                var title = data[i].title;
+                var price = data[i].price;
+                var num = data[i].num
+                var image = data[i].image
+                content += "<li><div class='cart-item'><div class='item-icon'><a><img src='${resource(dir: '/')}/images/"+image+"'></a></div><div class='item-info'><div class='item-name'>"+title+"</div><div><span>"+price+"</span>&nbsp;x&nbsp;<span>"+num+"</span></div></div></div></li>";
                 });
-                content += "<li><div class='total-price'>totalprice:"+totalPrice+"</div></li>"
-                $(".product-list").empty().html(content);
+                content += "</div><div class='total-price'>合计:"+totalPrice+"</div></div><li><div class='checkout'><a href='${resource(dir:"/")}order/create'><span>去结算</span></a></div></li>"
+                $(".cart-body").empty().html(content);
+            }else{
+                var content = "<li><div class='cart-body-title'>购物车是空的</div></li><div class='product-list-warp'><div class='product-list'></div></div><li><div class='checkout'><a href='${resource(dir:"/")}order/showCart'><span>查看购物车</span></a></div></li>"
+                $(".cart-body").empty().html(content);
             }
         },'json');
     });

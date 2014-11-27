@@ -34,25 +34,29 @@
 </div>
 <g:javascript>
     function addToCart(data){
-        var arr = $(eval('(' + data + ')'));
-            if(arr.length!=0){
+        var arr = $(eval('('+data+')'));
+
+        if(arr.length!=0){
                 var totalPrice = arr[0].totalPrice;
-                var content = "";
+                var content = "<li><div class='cart-body-title'>最近加入购物车的商品</div></li><div class='product-list-warp'><div class='product-list'>";
                 arr.each(function(i){
-                    var title = arr[i].title;
-                    var price = arr[i].price;
-                    var num = arr[i].num
-                    var image = arr[i].image
-                    content += "<li><div class='cart-item'><div class='item-icon'><a><img src='${resource(dir:"/")}/images/"+image+"'></a></div><div class='item-info'><div class='item-name'>"+title+"</div><div><span>"+price+"</span>&nbsp;x&nbsp;<span>"+num+"</span></div></div></div></li>";
+                var title = arr[i].title;
+                var price = arr[i].price;
+                var num = arr[i].num
+                var image = arr[i].image
+                content += "<li><div class='cart-item'><div class='item-icon'><a><img src='${resource(dir: '/')}/images/"+image+"'></a></div><div class='item-info'><div class='item-name'>"+title+"</div><div><span>"+price+"</span>&nbsp;x&nbsp;<span>"+num+"</span></div></div></div></li>";
                 });
-                content += "<li><div class='total-price'>totalprice:"+totalPrice+"</div></li>"
-                $(".product-list").empty().html(content);
+                content += "</div><div class='total-price'>合计:"+totalPrice+"</div></div><li><div class='checkout'><a href='${resource(dir:"/")}order/create'><span>去结算</span></a></div></li>"
+                $(".cart-body").empty().html(content);
+            }else{
+                var content = "<li><div class='cart-body-title'>购物车是空的</div></li><div class='product-list-warp'><div class='product-list'></div></div><li><div class='checkout'><a href='${resource(dir:"/")}order/showCart'><span>查看购物车</span></a></div></li>"
+                $(".cart-body").empty().html(content);
             }
+
     }
     var div;
     $(function(){
         $(".btn-add").bind("click",function(){
-            addToCart();
             div = $(this).parent().siblings(".product-img").clone();
             div.appendTo($(this).parent().siblings(".product-img")).css("position","fixed");
             div.animate({
