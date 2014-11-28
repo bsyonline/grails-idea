@@ -49,12 +49,7 @@
                     <ul class="cart-body">
 
                             <li>
-                                <g:if test="${session.user }">
-                                <div class="cart-body-title">最近加入购物车的商品</div>
-                                </g:if>
-                                <g:if test="${!session.user }">
                                 <div class="cart-body-title">购物车是空的</div>
-                                </g:if>
                             </li>
                             <div class="product-list-warp">
                                 <div class="product-list">
@@ -64,12 +59,7 @@
                                 </div>
                             </div>
                             <li>
-                                <g:if test="${session.user}">
-                                <div class="checkout"><g:link controller="order" action="create"><span>去结算</span></g:link></div>
-                                </g:if>
-                                <g:if test="${!session.user}">
                                 <div class="checkout"><g:link controller="order" action="showCart"><span>查看购物车</span></g:link></div>
-                                </g:if>
                             </li>
                         %{--<g:if test="${!session.user}">
                             <div class="cart-empty">

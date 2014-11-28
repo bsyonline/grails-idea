@@ -80,8 +80,11 @@ header{
     width: 100%;
 }
 .cart-label-text a{
-    height: 100%;
-    width: 100%;display: block;
+    height: 40px;
+    width: 100%;
+    display: block;
+    margin-top: -10px;
+    padding-top: 10px;
 }
 .cart-empty{
     width:290px;
@@ -214,7 +217,7 @@ a:hover{
     width:150px;
     text-align: right;
 }
-.save-btn{
+.save-btn,.save-btn-disabled {
     float:right;
     border: solid 1px #e5e5e5;
     width: 120px;
@@ -238,11 +241,16 @@ a:hover{
 .back-btn a,.save-btn a{
     width: 100%;
     height: 100%;
-    display: block;padding: 5px 0;
+    display: block;
+    padding: 5px 0;
 }
 .save-btn:hover,.back-btn:hover{
     background-color: #e8e8e8;
 }
-.disabled{
+.disabled,.disabled:hover,.disabled:focus{
     color:#e5e5e5;
+    width: 100%;
+    height: 100%;
+    display: block;
+    padding: 5px 0;
 }
