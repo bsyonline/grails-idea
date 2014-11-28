@@ -141,18 +141,21 @@ a:hover{
     float: left;
     border: solid 1px #e5e5e5;
     margin: 5px;
-    padding: 10px;
+
     width: 218px;
     position: relative;
 }
 .product-img{
     text-align: center;
-    max-width: 210px;
+    max-width: 220px;
     position: relative;
 }
+.product-img a{
+    display: block;
+}
 .product-img img{
-    max-width: 200px;
-    height: 200px;
+    max-width: 216px;
+    height: 219px;
 }
 .product-gird:hover{
     box-shadow: 0 0 4px rgb(114, 214, 238);
@@ -253,4 +256,66 @@ a:hover{
     height: 100%;
     display: block;
     padding: 5px 0;
+}
+
+
+/**************************view****************************/
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.product-shortcut{
+    float: left;
+}
+.product-shortcut .main{
+    border: solid 1px #e5e5e5;
+    width: 420px;height: 420px
+}
+.product-shortcut .main img{
+    width: 418px;height: 418px
+}
+.shortcuts{
+    margin-top: 20px;
+    text-align: center;
+}
+.product-shortcut .shortcuts .shortcut{
+    float: left;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    border: solid 1px #e5e5e5;
+    margin-right: 5px;
+}
+.product-shortcut .shortcuts .shortcut img{
+    max-width: 78px;
+    max-height: 78px;
+}
+.product-info-box{
+    border: solid 1px #e5e5e5;
+    width: auto;
+    margin-left: 450px;
+    height: 600px;
+}
+.product-info-box .title{
+    padding: 20px;
+}
+.product-info-box .price{
+    padding: 20px;
+}
+.product-info-box .btn-bar{
+    padding: 20px 120px 20px 120px;
+    text-align: center;
+}
+.btn-add,.btn-buy {
+    border: solid 1px #e5e5e5;
+    width: 200px;
+    text-align: center;
+    float: left;
+    margin: 0 10px;
+}
+.btn-buy a,.btn-add a{
+    width: 100%;
+    height: 100%;
+    display: block;
+    padding: 10px;
 }
